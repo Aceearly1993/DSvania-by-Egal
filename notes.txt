@@ -1,0 +1,329 @@
+portrait of ruin
+
+2206A9C - routine to set starting equipment per character
+2206AE8, 2206B04 - starting weapon ID Johnathan
+2206B48 - starting weapon ID Charlotte
+2206BFC - sets equipment
+	r0 - ?
+	r1 - type
+	r2 - equip slot (weapon, skill, helmet, etc.)
+	r3 - local ID
+
+
+22EBC1C - forces character switch, object98 (City of Haze pre-enter event)
+
+21CE664 - reverts player formation to original
+	22E8E78 - object 99, Dullahan defeat event (example)
+22D7A94 - checks if varA =/= 0 to play boss intro (set state 0xD)
+221B11C - removed DoS code that displayed sprite+played music after boss intro?
+221A0B0 - upper bound of weapon IDs
+2054494 - retrieves weapon ID for text name
+203ACFC - part of routine for displaying texts for item descriptions on use item screen
+	203AD10 - x-coordinate of text
+203A858 - routine for drawing item description, item use screen
+22D907C - routine that sets both partner characters based on selected mode, file selection
+22DBA9C - checks mode ID for whether should set next screen to opening intro
+203E4C0 - relates to equipment list setup when selecting which equipment to change?
+2051CA0 - relates to character setup, runs on file load
+21FD870 - check for Jonathan mode to not display level on bottom screen
+
+21E4288 - retrieves text ID for item name
+21E41BC - retrieves text ID for item description
+	r0 - item type/index
+	r1 - local item Id
+
+2111F52 - another mode
+2111F53 - player characters
+211217C - weapon ID for top-screen text
+2112010 - Charlotte current attack stat?
+20F6284 - screen/subscreen IDs
+211317E - currently selected item, use item screen
+2113180 - currently selected item, weapon, equip screen
+2112F7A - currently selected pause option
+2122BE4 - current gamemode
+	04 = boss rush
+	01 - standard gameplay
+	
+211285C - on-demand list of available modes
+	14 - Jonathan (hardcoded, not read)
+	15 - Sisters
+	23 - Richiter
+	16 - Old Axe Armor
+	2112698 - table of pointers for graphic data
+205B078 - draws mode graphics
+	r0 - pointer to graphic data?
+	r1 - graphic ID?
+	r2 - x-coord?
+	r3 - y-coord?
+231D2F0 - graphic table for file menu options
+	14 - Jonathan
+	15 - Sisters (231D3EC)
+	23 - Richiter
+	16 - Old Axe Armor
+
+
+205503C - retrieves stats when changing weapons?
+	20547F4 - parent routine
+2207678 - retrieves character base stats for load?
+	221EAF0 - character base stats, 0x18/character? (22077C8)
+	221EA64 - character growths?, 0x14/character? (22077D4)
+2207790 - routine that increases stats upon level-up?
+2111C1C - quantity of unknown item, causes game to add 50 to str
+	22088E4 - routine responsible for above, also applies to other stats
+203D0D0 - determines which check routine based on current pause option selected
+	higher level
+	r8 
+		-1 = close menu
+		00 = skip lower level check
+		01 = also use lower level check
+
+2034E0C - determines check routine for pause menu
+	lower level
+
+
+special objects:
+	07 - Jonathan/Charlotte boxes in pause menu (menuob0)
+	08 - GUI related to equip screen (equipob0)
+	09 - Use Item screen (5CB, useob0)
+	0A - Config screen
+	0B - 
+	0C - Relic screen
+	0D - Guides -> Enemies
+	0E - Guides -> Items
+	0F - Guides -> Skills
+	11 - Guides -> Quests
+203BB40 - loads palette pointer for equipob0 (203BCC4)
+
+22C2D40 - palette for use item screen
+
+203A58C - hardcoded character switch icons for use item screen
+
+022C431C - palette for f_prologue00
+
+203EA48 - loads palette?
+	r0 - pointer to filename?
+	r1 - GFX pointer?
+	r2 - palette
+	
+205C798 - PlaySong
+
+2205708 - routine to determine voice clip when attacking
+22077C8 - routine for determining stat increases on level up
+203E600 - routine for drawing items on character equip screen upon press X
+203E7A4 - partner ID to skip unarmed for, equip menu
+203E728 - checks r9 for current partner for which code to use when checking skill equippability, Equip menu
+2044518 - checks Jonathan equippable for stat change display
+2044530 - checks Charlotte equippable for stat change display
+21F7B70 - reads swing anim ID, AI
+	221E13C - table used in above AI calculation?
+		0x8 bytes/entry
+		00 - 
+21F7BA0 - hardcoded check for 0x9 (book)
+
+202C62C - draws weapon icon on equip screen
+	r0 - item pointer?
+	r1 - ??
+	r2 - 00?
+221A238 - sets up data for weapon animation
+2205634 - sets up data for weapon animation
+
+
+21C0554 - holds pointer to some table related to sounds (called in play SFX)?
+	213FF10 - table of sound IDs to entries
+		0xC bytes/entry
+			00 - seqqarc ID
+		~0x5B38 bytes in size (~0x79A entries?)
+		-derived from ds_data_hed.sdat
+
+221A260 - routine that determines GFX for weapon animation
+221F110 - table of pointers for weapon animations
+	0xC bytes/entry
+	00 - pointer to GFX
+	04 - pointer?
+	08 - pointer to palette
+
+GFX table is at 0x20CDAFC, and each entry is 0x20 bytes
+221AF3C - routine that loads GFX for weapon animations?
+221B10C - hardcoded value for so/p_wp GFX entry
+	=0x866
+	221AF88 - reference
+	
+com01 = 0x34D
+pause menu main GFX ID = 0x51A (/sc/f_menuob0.dat)
+
+2052144 - routine that loads common GFX assets
+20BFF26 - number of pages to load for common GFX
+20521A8 - loads GFX ID based on required page (why not +0x34D?)
+
+
+0x22B36E8 - highest ID+1 for icon (0x153, puppet master skill icon)
+
+2215820 - attempts to load GFX ID from middle of texts?
+
+221B114 - hardcoded value for sc2/f_wp GFX entry
+	=0x6AB
+	221B024 - reference
+
+2048F54 - routine that retrieves shop items
+
+2202E30 - determines skill ID when pressing Select
+221E3F4 - table of skills to swap when pressing Select (Richter, Maria, Old Axe armor)
+	0x8 bytes/entry
+	00 - quantity?
+	02 - starting icon ID?
+	04 - pointer to skill list
+		0x2 bytes/skill
+
+221A6C8 - part of routine for special effects
+221EFE0 - table of weapon special effects, p1 (byte 0x9 in weapon data)
+221F000 - table of weapon special effects, p2 (byte 0x9 in weapon data)
+	seems to hold the actual routines for the special effects
+
+2216460 - special effect tori
+
+2216200 - special effect heaven's sword
+	221AA94 - checks if equipped weapon different from weapon in animation?
+	22162E0 - animation time for when weapon should return to user (default 0x200)
+		higher value -> quicker return 
+			00 = never despawn
+	22162B0 - time to count down from for animation
+		also increases distance/speed?
+	22162CC - 221645C: 3F6B851F - some number involved in decrementing above value
+	22162E8 - applies negative momentum after time hits threshold?
+	2216258 - checks state (01 - forward, 02 - backward)?
+	2216404 - bl 21FB680 - checks whether end of timer?
+	2012CBC - deletes weapon??
+
+20A6B74 - loads asset data to RAM
+209B91C - sets up releavant RAM addresses for above?
+	21CBF80 - holds addresses
+
+
+;.org 0x20CA5DC+0x18*0x4
+;.dw 0x205BCC0	;routine for ID 0x5
+
+
+=============================================================
+=============================================================
+=============================================================
+
+
+dawn of sorrow:
+6014 - Dario "HAHAHAHAHA"
+
+20F740E - current player ID (corrects on file reload)
+20F7256 - gamemode (boss rush, julius, soma, etc.)
+20F7257 - Soma/Julius mode (character change, pause)
+20F7258 - character unlocks 
+	01 - Soma
+	02 - Julius
+	04 - Yoko
+	08 - Alucard
+20CA93E - current character
+20F7418 - current soul
+20F7468 - current soul index per character
+
+20F6DFC - game flags?
+
+20F1BA0 - which pause options are available
+
+2115638 - screen ID? 
+20F82B0 - screen ID?
+203E5A8 - frames to wait on "Licensed by Nintendo" screen
+203E660 - frames to wait on Konami screen
+
+0xF2 - 0x22A1A70 - Soma's "icon"
+border colors:
+	00 - light blue
+	01 - orange/yellow
+	02 - red (Yoko?)
+	03 - red/orange
+	04 - yellow-orange
+	05 - green
+	06 - blue (Alucard)
+	07 - purple
+	08 - brown
+	09 - gray (Julius?)
+	0A - darker gray
+	0B - black
+	0C - tan
+	0F - dark/light blue
+	10 - same as above
+	11 - 
+
+20CAA74 - current character for weapon anim?
+222DFA8 - table of animation IDs per swing type
+222DF68 - table of voice clips to play for character swaps
+222DED4 - table of: max souls + pointer to soul list
+	
+21FF8D4 - sets up data for character swap
+21FF900 - equip this weapon ID when switching to Alucard
+21FF92C - equip this weapon ID when switching to Julius
+21F6B88 - checks character unlocks for icon display
+21FC794 - checks character unlocks for character swap
+21FC4F8 - handles soul toggle
+21F5F78 - sets initial character unlocks, Julius mode
+2030030 - checks mode for pause screen
+2028460 - checks which pause options should be available
+21ECAE8 - points to below
+203A9E0 - routine for drawing item names+soul owned, bestiary
+221AC48 - loads data from table based on swing anim?
+	221F020 - table referenced above (0x8 bytes/entry)
+	affects positioning of animation sprite relative to character
+2205708 - plays voice clip based on swing anim
+	221E3A0 - table of pointers to table of voice clips
+
+221A690 - hardcoded check for swing anim 8 (whip)
+
+
+21FC738 - retrieves voice clip for swap
+
+203E14C - exact frames to wait before triggering opening animation
+
+209A5F0 - table of routines for which pause options are available
+21ED410 - max number of bestiary entries
+	20F1C80 - temp RAM location of
+
+208CC6C - table of sprite filenames
+21FDE8C - handles backdash
+229EADC - pointer to start of icon table
+	22A0F18 - icon tablw
+21F6B24 - sets starting y-coordinate, icons
+21F6B64 - adjusts x-coordinate after subweapon icon
+
+222CBE0 - cutscene actor table
+	sprite, palette, object ID (0x10 bytes)
+	02 - Yoko
+	03 - Hammer
+222CB90 - table? (0x8 bytes)
+21D6F88 - routine to draw GFX data for objects 1 and 2
+209B88C - GFX table for special objects
+
+21D6F88 - retrieves certain data based on event type+ID
+4CC - hammer 
+21D750C - related to drawing assets for objects
+
+character data table: 222E474
+pointers to:
++0  (74) x12
++14 (88) x1
++24 (98) x1
++28 (9C) x1
++2C (a0) x1
+
+search 	74E42202
+replace 60463102 
+
+208CC6C - sprite asset index table (byte 0x58 of player data)
+(0x28 bytes/entry)
+
+
+hammer:
+gfx list pointer: 2314640 (pointer to 8 bytes, data+pointer to GFX list)
+	00 01 XX 00 | XX = number of pages
+sprite pionter: 2115608	;2314608
+palette: 22BBCBC
+state anims pointer: 2314580
+filename pointer: 2314650
+sprite asset index 4CC?
+

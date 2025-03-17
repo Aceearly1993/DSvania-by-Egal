@@ -1,0 +1,30 @@
+Castlevania - Portrait of Ruin (EgalLau37 test project)
+	Lead creator: EgalLau37
+	[Discord:			@SageMatthis#8442 ]
+	[Discord:			https://discord.gg/7QKpGC49Qk ("CV Romhacking")]
+	[Youtube:			https://www.youtube.com/channel/UCkNo0SdGvbo-iRnNrKnftIQ ]
+
+Current Version: α 0.1.0 {03/16/2025}
+Current overview:
+	♦Work-in-progress Julius mode
+	♦Changes weapon list
+		♪Enemy drops, Shop list, Quest rewards tweaked to account for altered weapon list
+	♦Reduced SP required for mastery
+	♦Spells can be mastered
+	♦All characters unlocked by default
+		♪Characters other than Jonathan and Charlotte start with:
+			☼1x Record player
+			☼1x (Records 1~5)
+	♦Various quality of life changes
+	
+
+
+To-do:
+	☼Other characters
+	☼Replace placeholder graphics
+	☼Add functioning guns
+	☼Add voice clips/SFX
+
+Credits:
+	♪masked_dedede_ -	Pause menu partner boxes
+	♪LagoLunatic 	- 	DSVania + notes

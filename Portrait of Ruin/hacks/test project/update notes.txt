@@ -1,0 +1,40 @@
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+First release (α 0.1.0) {03/16/2025} [initial release]: 
+
+Changelog:
+	→changed weapon list
+		☼added Japanese blades
+		☼added throwing weapons
+		☼replaced whip affinity with stab affinity
+			♪(enemy affinities are currently unchanged)
+		☼changed certain weapons to stab affinity
+		☼changed whip weapons to blunt affinity
+	→consumeable items now display the restoration amount
+	→changed enemy drops, shop list, and quest rewards to match altered weapon list
+	→added some characters from Dawn of Sorrow
+		☼added Julius Belmont
+		☼added Yoko Belnades
+	→unlocked other character modes from the start
+	→added Julius mode
+	→characters other than Jonathan and Charlotte now also start with a Record player and all Records
+	→changed warps to allow warping between areas
+	→the standard pause menu is now available in other modes
+		☼disabled Equip and Talk options in pause menu outside of Jonathan mode
+	→the Use item screen now displays character icons for the current characters instead of always Jonathan/Charlotte
+	→the main pause screen and equip screen now display different graphics depending on the mode
+	→reduced the SP required to master subweapons
+	→spells can now be mastered
+	→the current level is now always displayed on the bottom screen
+	→the game now skips the company name screens on boot-up
+	→adjusted AI for Behemoth so that Behemoth will no longer attack with its tongue if it is too close to a wall
+	→changed voice clips for Old Axe Armor
+	→fixed Death softlock
+	→fixed oversight that allowed obtaining infinite quest rewards
+	→fixed generic The Creature enemies also setting its boss defeat flag
+	→tweaked partner AI for compatability with additional weapon types
+	→tweaked Jonathan and Charlotte to allow them to slide jump
+	→tweaked Charlotte to be able to dive kick and use hippogryph
+	→item icons now appear on the Use item screen
+	
+	
+	
