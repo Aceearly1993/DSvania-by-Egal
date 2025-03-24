@@ -1,6 +1,19 @@
 ↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
-First release (α 0.1.0) {03/16/2025} [initial release]: 
+Second release (α 0.2.0) {03/23/2025} [second release]: 
+Changelog:
+	→added pause menu graphics for Dawn of Sorrow characters
+	→added Soma mode (work-in-progress)
+	→character and difficulty are now always displayed on file select screen
+		☼normal difficulty now also displays level cap
+	→increased level cap display to allow three digits
+	→added ability to set custom level caps for both Normal and Hard difficulties
+	→fixed Yoko's base attack stat being too low
+	→added Alucard mode (work-in-progress)
+	→added lifesteal and big heart drops for Yoko
 
+
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+First release (α 0.1.0) {03/16/2025} [initial release]: 
 Changelog:
 	→changed weapon list
 		☼added Japanese blades
@@ -35,6 +48,4 @@ Changelog:
 	→tweaked Jonathan and Charlotte to allow them to slide jump
 	→tweaked Charlotte to be able to dive kick and use hippogryph
 	→item icons now appear on the Use item screen
-	
-	
-	
+

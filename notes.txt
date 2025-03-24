@@ -8,9 +8,69 @@ portrait of ruin
 	r1 - type
 	r2 - equip slot (weapon, skill, helmet, etc.)
 	r3 - local ID
+20FCC90 - current mp regen rate?
 
+2111F5B - max level
+2112168 - current level
+22078CC - absolute maximum level for remaining EXP for next level display?
+
+20F628C - if=0x1 -> paused
+20F628E - if=0x3 -> display pause instead of level
+
+2058970 - part of routine that checks if up/down pressed, file select -> mode select
+2111000 - max number of options
+		+52 currently selected option
+		+48 selected option, difficulty
+22D7E88 - determines level cap based on option set, level select
+
+2054D94 - draws level on top-screen
+21FD87C - draws level on bottom-screen
+203D738 - draws level on pause screen
+
+22D9020 - sets difficulty + level cap
+	r0 = 2110F00
+	r1 = difficulty
+	r2 = level cap
 
 22EBC1C - forces character switch, object98 (City of Haze pre-enter event)
+
+213D35E - mode
+213D360 - file 1 name
+	00 - file 1 name
+	09 - area ID
+	0a - level
+	0b - icon related
+	0c - percent map
+	10 - time
+	12 - level cap
+	18 - gold
+	
+	
+
+
+2112828 - file 1 has CLEAR?
+22D8244 - checks not Jonathan mode to skip CLEAR?
+22D92D4 - routine to check inputs on file select screen
+
+
+20520E8 - checks modeB byte
+	if 0x00, do x
+	all other values do y (2111F4C set to 0)
+2051F68 - checks modeB byte
+	if 0x00,0x01,0x02, do x
+	if 0x3, do y
+	if 0x4, do z (unused?)
+20329F8 - checks if modeB byte =0x06 (unused?)
+21FC808 - checks if level cap greater than 99 to set to 99
+21FC8F4 - checks mode byte for Old Axe Armor to disable certain relics
+21DD8A8 - checks modeB byte for items pickups
+	if type 0x2 AND ID=0x8 OR ID=0x9, spawn item
+21D9A44 - checks if modeB = 0x3 to terminate routine early
+21D95BC - checks if modeB = 0x0 for enemy item drops?
+21D96F8 - checks if modeB = 0x0 for enemy item drops?
+21D96CC - checks if enemy has item1 for drop
+
+
 
 21CE664 - reverts player formation to original
 	22E8E78 - object 99, Dullahan defeat event (example)
@@ -27,13 +87,25 @@ portrait of ruin
 2051CA0 - relates to character setup, runs on file load
 21FD870 - check for Jonathan mode to not display level on bottom screen
 
+2201C70 - some routine that writes to 0x20FCBAC (adjusts x-position of weapon animation)
+21F6044 - sets swing position offsets for partner character
+		20FCD0C - x-adjustment (adjusts character sprite position)
+
 21E4288 - retrieves text ID for item name
 21E41BC - retrieves text ID for item description
 	r0 - item type/index
 	r1 - local item Id
 
+206F95C - special object 1 (candle), heart drop check
+2207C54 - checks heart brooch equipped, 
+21D9D5C - retrieves character attack to damage enemy
+2202C44 - calculates below?
+20FCB28 - character base damage based on below?
+20FCBC0 - character base damage?
+2111F51 - story/pick-ups available
 2111F52 - another mode
 2111F53 - player characters
+2111F55 - normal/hard difficulty
 211217C - weapon ID for top-screen text
 2112010 - Charlotte current attack stat?
 20F6284 - screen/subscreen IDs
@@ -43,6 +115,9 @@ portrait of ruin
 2122BE4 - current gamemode
 	04 = boss rush
 	01 - standard gameplay
+	
+2100AE8 - HP of 1st enemy in room?
+
 	
 211285C - on-demand list of available modes
 	14 - Jonathan (hardcoded, not read)
@@ -154,7 +229,7 @@ pause menu main GFX ID = 0x51A (/sc/f_menuob0.dat)
 2052144 - routine that loads common GFX assets
 20BFF26 - number of pages to load for common GFX
 20521A8 - loads GFX ID based on required page (why not +0x34D?)
-
+2209B24 - routine that restores MP naturally
 
 0x22B36E8 - highest ID+1 for icon (0x153, puppet master skill icon)
 
@@ -199,15 +274,20 @@ pause menu main GFX ID = 0x51A (/sc/f_menuob0.dat)
 	21CBF80 - holds addresses
 
 
+20E03DC - portrait pointers table
+
+
+
 ;.org 0x20CA5DC+0x18*0x4
 ;.dw 0x205BCC0	;routine for ID 0x5
 
 
-=============================================================
-=============================================================
-=============================================================
 
 
+
+=============================================================
+=============================================================
+=============================================================
 dawn of sorrow:
 6014 - Dario "HAHAHAHAHA"
 

@@ -5,5 +5,7 @@ Currently known bugs/issues:
 		☼this can be fixed by attacking with another weapon, then switching back
 	→backing out of character select can crash hardware
 	→Julius's whip is offset
+	→the Dawn of Sorrow character icons disappear after dialogue
+	→the Dawn of Sorrow characters have no voice clips
 
 
