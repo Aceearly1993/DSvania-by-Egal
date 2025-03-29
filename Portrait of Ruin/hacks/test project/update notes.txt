@@ -1,8 +1,37 @@
 ↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
-Second release (α 0.2.0) {03/23/2025} [second release]: 
+Third release (α 0.3.0) {03/29/2025} [snapshot release]: 
+Changelog:
+	→all modes can now access New Game+ upon beating the game
+	→all modes can now receive the New Game+ reward items upon beating the game
+	→changed the requirement for New Game+ reward items to be less than or equal to the level cap instead of the exact value
+	→tweaked defense values for some chestplates
+	→the file select screen now displays three digits for level
+	→adjusted positioning of character names to be more in-line on file select screen
+	→Zephyr now plays his intro cutscene upon entering his boss fight in Nest of Evil
+	→Zephyr now calls his voice clips during his intro cutscene
+	→Balore now plays its intro cutscene in Nest of Evil
+	→changed Balore's room in Nest of Evil to be two screens wide
+	→changed Suspend and CLEAR graphics on file select screen
+
+Bugfixes:
+	→fixed incorrect shop list
+	→fixed character names not clearing on file select screen
+	→fixed crash on file select screen
+	→fixed oversight that caused enemy damage to wrap around to 1 when level cap exceeded 100
+	→fixed game removing incorrect weapon instead of Vampire Killer on New Game+
+	→fixed normal/hard difficulty display being determined by level cap instead of the actual difficulty on the file select screen
+	→fixed level display only displaying two digits on file select screen
+	→fixed game saving file select screen data to the incorrect file
+	→fixed music not playing after Dawn of Sorrow boss intro animations
+	→fixed Whip's Memory removing and granting the incorrect item IDs
+
+
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+Second release (α 0.2.0) {03/23/2025} [snapshot release]: 
 Changelog:
 	→added pause menu graphics for Dawn of Sorrow characters
 	→added Soma mode (work-in-progress)
+	→added new weapon icons to replace placeholder icons
 	→character and difficulty are now always displayed on file select screen
 		☼normal difficulty now also displays level cap
 	→increased level cap display to allow three digits

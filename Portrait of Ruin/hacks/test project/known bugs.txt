@@ -3,9 +3,9 @@ Currently known bugs/issues:
 	→throwing weapons sometimes run out in larger rooms
 	→upon loading a save, throwing weapons use the incorrect animation and are displaced
 		☼this can be fixed by attacking with another weapon, then switching back
-	→backing out of character select can crash hardware
 	→Julius's whip is offset
 	→the Dawn of Sorrow character icons disappear after dialogue
 	→the Dawn of Sorrow characters have no voice clips
+	→Whip's Memory's weapon GFX fail to load
 
 
