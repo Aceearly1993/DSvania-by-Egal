@@ -8,14 +8,26 @@ portrait of ruin
 	r1 - type
 	r2 - equip slot (weapon, skill, helmet, etc.)
 	r3 - local ID
-20FCC90 - current mp regen rate?
 
-2111F5B - max level
-2112168 - current level
-22078CC - absolute maximum level for remaining EXP for next level display?
 
 20F628C - if=0x1 -> paused
 20F628E - if=0x3 -> display pause instead of level
+
+
+200A2A0 - routine that displays digits?
+	r0 - related to x-positioning?
+	r1 - 
+	r2 - related to quantity of digits?
+	r13+0C - digit style?
+		00 - draw exact quantity of digits
+		01 - draw exact quantity of digits + blue
+		02 - highest digit is plus symbol
+		03 - highest digit is plus symbol + blue
+		04 - draw with extra digits filled with 0
+		05 - draw with extra digits filled with 0 + blue
+		06 - same as 04?
+		07 - same as 05?
+		08 - same as 00?
 
 2058970 - part of routine that checks if up/down pressed, file select -> mode select
 2111000 - max number of options
@@ -34,24 +46,37 @@ portrait of ruin
 
 22EBC1C - forces character switch, object98 (City of Haze pre-enter event)
 
-213D35E - mode
-213D360 - file 1 name
-	00 - file 1 name
-	09 - area ID
-	0a - level
-	0b - icon related
-	0c - percent map
-	10 - time
-	12 - level cap
-	18 - gold
-	
-	
+213D35C - file 1
+	+00 - is file a copy
+	+01 - file has New Game+
+	+02 - character mode
+	+04 - file name
+	+0D - area ID
+	+0E - level
+	+0F - icon-related, color?
+	+10 - map percentage
+	+12 - level cap
+	+14 - time
+	+1C - gold
+	+20 - ID of file source (if a copy)
+	0x28 bytes/entry?
+
+22D9B34 - clears area name
+22D9B50 - clears file name
+22D9B70 - clears level
+22D9B8C - clears time
+22D9BA8 - clears gold
+22D9BC8 - clears level?
+
+
 
 
 2112828 - file 1 has CLEAR?
 22D8244 - checks not Jonathan mode to skip CLEAR?
 22D92D4 - routine to check inputs on file select screen
-
+22D9778 - OAM-related data for level number OAM object
+22D9884 - percentage OAM tile ID
+22D9E74 - sets up gold amount to be drawn
 
 20520E8 - checks modeB byte
 	if 0x00, do x
@@ -70,7 +95,27 @@ portrait of ruin
 21D96F8 - checks if modeB = 0x0 for enemy item drops?
 21D96CC - checks if enemy has item1 for drop
 
+2111BA8 - if flag 0x40 set, barrier disappears
 
+221D908 - start of special objects create code pointers table
+221DC14 - start of special objects create code pointers table
+
+
+21E3AA8 - checks consumeable use ID and executes
+203A330 - item ID of record player+1 ?
+
+code that runs after Dracula defeat or credits:
+21FC88C - checks if Jonathan mode
+21FAEA8 - checks if Sisters mode
+21FE754 - checks for each mode
+21FD870 - check for Jonathan mode, after Dracula defeat, skips following code if true
+21F4678 - check for Sister mode, runs after Dracula defeat+game save
+
+object AB
+22E9330 - checks hard mode, then checks level cap for stat boost items
+20117B0 - writes New Game+ option to save file data, run by object AB
+02011880 E35F0000
+020117B8 E3A07001
 
 21CE664 - reverts player formation to original
 	22E8E78 - object 99, Dullahan defeat event (example)
@@ -96,12 +141,34 @@ portrait of ruin
 	r0 - item type/index
 	r1 - local item Id
 
+20124D0 - sets main player state
+204D38C - checks if character mode =0x4; if true, do not play music?, used for Nest of Evil bosses
+
+overlay_0043, Balore create
+22D7F88 - check Balore Var A for facing direction?
+22D8024 - check Balore Var A+2 for?
+22D810C - check Balore Var A for starting state
+22D7C04 - update code, Balore door?
+	00 - door lowering
+	01 - door lowered
+	02 - door raising
+22D7B68 - spawns Balore door
+22D7B90 - x-positioning of Balore door
+20333C4 - subroutine to lock camera position
+	r0 - x-position 1?
+	r1 - 
+
 206F95C - special object 1 (candle), heart drop check
 2207C54 - checks heart brooch equipped, 
 21D9D5C - retrieves character attack to damage enemy
 2202C44 - calculates below?
 20FCB28 - character base damage based on below?
 20FCBC0 - character base damage?
+
+20FCC90 - current mp regen rate?
+2111F5B - max level
+2112168 - current level
+22078CC - absolute maximum level for remaining EXP for next level display?
 2111F51 - story/pick-ups available
 2111F52 - another mode
 2111F53 - player characters
@@ -116,9 +183,20 @@ portrait of ruin
 	04 = boss rush
 	01 - standard gameplay
 	
+223285C - item ID to remove after Whip's Memory fight (default 0x1, Vampire Killer (starter))
+2232888 - item ID to grant after Whip's Memory fight (default 0xA, Vampire Killer (unlocked))
+20BE4C8 - table referenced by Whip's Memory
+	2014F08 - subroutine
+2231EF0 - weapon ID to equip on Whip's Memory
+2231EB8 - weapon ID to equip on Whip's Memory?
+21F3944 - related to standard attack, Whip's Memory?, plays character attack animation
+
+
 2100AE8 - HP of 1st enemy in room?
 
-	
+22E0350 - clears BG for transition from file select to title screen
+22D7F10 - leads to routine that clears/writes text during file select
+
 211285C - on-demand list of available modes
 	14 - Jonathan (hardcoded, not read)
 	15 - Sisters
@@ -202,13 +280,18 @@ special objects:
 221A238 - sets up data for weapon animation
 2205634 - sets up data for weapon animation
 
-
+20603B4 - checks if current sound header table size matches the stated file size
 21C0554 - holds pointer to some table related to sounds (called in play SFX)?
 	213FF10 - table of sound IDs to entries
 		0xC bytes/entry
 			00 - seqqarc ID
 		~0x5B38 bytes in size (~0x79A entries?)
 		-derived from ds_data_hed.sdat
+			0x00 - ???
+			0x04 - file size
+			0x08 - ID of last sseq?
+			0x0A - ???
+213DD04 - current song playing?
 
 221A260 - routine that determines GFX for weapon animation
 221F110 - table of pointers for weapon animations
@@ -275,6 +358,7 @@ pause menu main GFX ID = 0x51A (/sc/f_menuob0.dat)
 
 
 20E03DC - portrait pointers table
+
 
 
 

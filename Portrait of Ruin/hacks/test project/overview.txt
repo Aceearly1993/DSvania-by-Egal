@@ -4,7 +4,7 @@ Castlevania - Portrait of Ruin (EgalLau37 test project)
 	[Discord:			https://discord.gg/7QKpGC49Qk ("CV Romhacking")]
 	[Youtube:			https://www.youtube.com/channel/UCkNo0SdGvbo-iRnNrKnftIQ ]
 
-Current Version: α 0.1.0 {03/16/2025}
+Current Version: α 0.3.0 {03/29/2025}
 Current overview:
 	♦Work-in-progress Julius mode
 	♦Changes weapon list
