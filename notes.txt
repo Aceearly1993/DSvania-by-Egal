@@ -375,7 +375,15 @@ pause menu main GFX ID = 0x51A (/sc/f_menuob0.dat)
 dawn of sorrow:
 6014 - Dario "HAHAHAHAHA"
 
-20F740E - current player ID (corrects on file reload)
+20F6E27 - must be 00 for Somacula event to play
+20F737C - current attack stat
+20CAA00 - current character states
+20CAA10 - current character ability flags
+20D0FBC - player position for weapon sprite positioning
+20F7080 - additional offset for weapon sprite positioning?
+20F7420 - current weapon ID
+20F740E - current character ID (corrects on file reload)
+20CAA74 - current character ID
 20F7256 - gamemode (boss rush, julius, soma, etc.)
 20F7257 - Soma/Julius mode (character change, pause)
 20F7258 - character unlocks 
@@ -387,14 +395,32 @@ dawn of sorrow:
 20F7418 - current soul
 20F7468 - current soul index per character
 
+21FC3C0 - hardcoded stat boosts per character
+21FC2F8 - hardcoded check for Yoko lifesteal
+2200AF4 - calculates attack stat
+
 20F6DFC - game flags?
 
 20F1BA0 - which pause options are available
+
+21F6804 - checks Mud Demon
+21F67C8 - checks Procel
+21FEA5C - checks Hippogryph?
+	checks ability 0x4 (20F741E, 0x8)
+	checks character abilities (20CAA10, 0x40)
+	checks other flags? (20CAA00, 0x6080)
+	checks more flags? (20CA3A0, 0x200)
+	checks more flags? (20CAA2A, =/=0)
+2213364 - continuosly reads positioning for weapon sprite animation
+21C5354 - continuously sets position for RPG ammo
+221299C - sets initial positioning for weapon sprite animation
 
 2115638 - screen ID? 
 20F82B0 - screen ID?
 203E5A8 - frames to wait on "Licensed by Nintendo" screen
 203E660 - frames to wait on Konami screen
+
+21F641C - runs on character switch
 
 0xF2 - 0x22A1A70 - Soma's "icon"
 border colors:
@@ -431,14 +457,9 @@ border colors:
 2028460 - checks which pause options should be available
 21ECAE8 - points to below
 203A9E0 - routine for drawing item names+soul owned, bestiary
-221AC48 - loads data from table based on swing anim?
-	221F020 - table referenced above (0x8 bytes/entry)
-	affects positioning of animation sprite relative to character
-2205708 - plays voice clip based on swing anim
-	221E3A0 - table of pointers to table of voice clips
 
-221A690 - hardcoded check for swing anim 8 (whip)
-
+2212FD0 - sets RPG ammo momentum
+2212B24 - sets gun bullet y-offset
 
 21FC738 - retrieves voice clip for swap
 
@@ -481,6 +502,10 @@ replace 60463102
 208CC6C - sprite asset index table (byte 0x58 of player data)
 (0x28 bytes/entry)
 
+20CEF90 - number of souls, temp?
+220F6EC - Rycuda, uses number of souls
+20CED7E - Rycuda, number of bolts based on souls?
+
 
 hammer:
 gfx list pointer: 2314640 (pointer to 8 bytes, data+pointer to GFX list)
@@ -490,4 +515,3 @@ palette: 22BBCBC
 state anims pointer: 2314580
 filename pointer: 2314650
 sprite asset index 4CC?
-
