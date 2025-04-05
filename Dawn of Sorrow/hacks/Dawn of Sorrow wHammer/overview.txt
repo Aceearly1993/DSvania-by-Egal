@@ -1,0 +1,17 @@
+Castlevania - Dawn of Sorrow w/Hammer
+	Lead creator: EgalLau37
+	[Discord:			@SageMatthis#8442 ]
+	[Discord:			https://discord.gg/7QKpGC49Qk ("CV Romhacking")]
+	[Youtube:			https://www.youtube.com/channel/UCkNo0SdGvbo-iRnNrKnftIQ ]
+
+Current Version: 1.0.0 {04/05/2025}
+Current overview:
+	♦Adds Hammer as a playable character
+
+
+To-do:
+	☼Add voice clips
+
+Credits:
+	♪masked_dedede_ -	sprites for Hammer
+	♪LagoLunatic 	- 	DSVania + notes

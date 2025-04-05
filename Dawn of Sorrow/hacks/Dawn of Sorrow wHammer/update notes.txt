@@ -1,0 +1,8 @@
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+First release (1.0.0) {04/05/2025} [initial release]: 
+Changelog:
+	→added Hammer as a playable character
+	→the boot-up screens are now mostly skipped
+	→the regular pause menu is now accessible in Julius Mode
+	→the bestiary now displays enemy HP/MP
+
