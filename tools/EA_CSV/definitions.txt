@@ -1,0 +1,17 @@
+
+#define overlay_41	"0x2308920"
+
+#define Affinity_strike	"0x1"
+#define Affinity_stab	"0x2"
+#define Affinity_slash	"0x4"
+#define Affinity_fire	"0x8"
+#define Affinity_ice	"0x10"
+#define Affinity_lightning	"0x20"
+#define Affinity_dark	"0x40"
+#define Affinity_holy	"0x80"
+#define Affinity_poison	"0x100"
+#define Affinity_curse	"0x200"
+#define Affinity_stone	"0x400"
+
+#define Affinity_whip	"0x2"
+#define Affinity_blade	"0x4"
