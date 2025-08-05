@@ -38,16 +38,6 @@ cmp r2,0x0
 addne r0,r4,0x100
 ldmnefd r13!,{r1-r6,r15}
 
-ldr r1,=0x2100258
-ldrb r2,[r1,0xBC]
-tst r2,0x4
-SetPaletteForSlide:
-movne r2,0x0
-strneb r2,[r4,0x88]
-addne r0,r4,0x100
-ldmnefd r13!,{r1-r6,r15}
-
-
 ldrh r2,[r1,0x76]
 cmp r2,0x0
 beq SkipAccessory1
