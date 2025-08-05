@@ -1,0 +1,120 @@
+.nds
+.relativeinclude on
+.erroronwarning on
+
+; This adds a check to change the current index of the character
+; palette based on the currently equipped accessories.
+; The values in the table are the palette index in the character's
+; base palette pointer; a value of 0x2 will use Shanoa's 2P
+; palette, for example.
+; Accessory 1 will take priority over accessory 2 if it changes
+; the palette, but if accessory 1 has no palette index ID
+; specified, accessory 2 is then checked.
+; When petrified, the default palette will be used until the
+; status is removed.
+; by EgalLau37
+
+Overlay86Start equ 0x22EB1A0
+FreeSpace equ Overlay86Start+0x2200
+
+
+.open "ftc/arm9.bin", 0x2000000
+
+.org 0x2049744
+bl UpdatePlayerPalette
+
+.close
+
+
+.open "ftc/overlay9_86", Overlay86Start
+
+.org FreeSpace
+
+UpdatePlayerPalette:
+stmfd r13!,{r1-r6,r14}
+ldr r1,=0x20FFC58
+ldrb r2,[r1,0xB3A]
+cmp r2,0x0
+addne r0,r4,0x100
+ldmnefd r13!,{r1-r6,r15}
+
+ldr r1,=0x2100258
+ldrb r2,[r1,0xBC]
+tst r2,0x4
+SetPaletteForSlide:
+movne r2,0x0
+strneb r2,[r4,0x88]
+addne r0,r4,0x100
+ldmnefd r13!,{r1-r6,r15}
+
+
+ldrh r2,[r1,0x76]
+cmp r2,0x0
+beq SkipAccessory1
+ldr r3,=AccessoryToPaletteTable
+ldrb r3,[r2,r3]
+cmp r3,0x0
+beq SkipAccessory1
+strb r3,[r4,0x88]
+b SkipAccessory2
+SkipAccessory1:
+ldrh r2,[r1,0x78]
+cmp r2,0x0
+streqb r2,[r4,0x88]
+beq SkipAccessory2
+ldr r3,=AccessoryToPaletteTable
+ldrb r3,[r2,r3]
+strb r3,[r4,0x88]
+
+SkipAccessory2:
+add r0,r4,0x100
+ldmfd r13!,{r1-r6,r15}
+.pool
+
+
+
+AccessoryToPaletteTable:
+.db 0x0	;0x0
+.db 0x0	;0x1
+.db 0x0	;0x2
+.db 0x0	;0x3
+.db 0x0	;0x4
+.db 0x2	;0x5	;Priestess ring
+.db 0x2	;0x6	;Empress ring
+.db 0x0	;0x7
+.db 0x0	;0x8
+.db 0x0	;0x9
+.db 0x0	;0xA
+.db 0x0	;0xB
+.db 0x0	;0xC
+.db 0x0	;0xD
+.db 0x0	;0xE
+.db 0x0	;0xF
+.db 0x0	;0x10
+.db 0x0	;0x11
+.db 0x0	;0x12
+.db 0x0	;0x13
+.db 0x0	;0x14
+.db 0x0	;0x15
+.db 0x0	;0x16
+.db 0x0	;0x17
+.db 0x0	;0x18
+.db 0x0	;0x19
+.db 0x0	;0x1A
+.db 0x0	;0x1B
+.db 0x0	;0x1C
+.db 0x0	;0x1D
+.db 0x0	;0x1E
+.db 0x0	;0x1F
+.db 0x0	;0x20
+.db 0x0	;0x21
+.db 0x0	;0x22
+.db 0x0	;0x23
+.db 0x0	;0x24
+.db 0x0	;0x25
+.db 0x0	;0x26
+.db 0x0	;0x27
+
+
+.close
+
