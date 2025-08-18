@@ -12,17 +12,20 @@
 ; This ASM comes with two additional files:
 ; "bestiary_texts.bin" and "topScreen_texts.bin"
 ; These need to be manually written to the correct overlay
-; files to function correctly.
+; file to function correctly.
 ; Either search "Paste-write" and paste-write the contents over the
 ; message or go to the respective addresses and paste-write.
-; "bestiary_texts.bin" goes in overlay 22 at 0x8D9B8.
-; "topScreen_texts.bin" goes in overlay 86 at 0x2FE4.
+; "bestiary_texts.bin" goes in overlay 86 at 0x3794.
+; "topScreen_texts.bin" goes in overlay 86 at 0x308C.
+; This also fixes the glyph display to match the control scheme
+; in Albus mode as well as display the name of the current 
+; glyph union.  The glyph union display can be disabled below.
 
 ; by EgalLau37
 
-
 EnemyDataTable	equ	0x20B6364
 MaximumBestiarySize	equ	0x78
+GlyphUnionNameDisplay	equ	"True"	;"False" to disable
 
 Overlay86Start equ 0x22EB1A0
 FreeSpace equ Overlay86Start+0x2F00
@@ -35,15 +38,33 @@ ldr r7,=TopScreenTextData
 .org 0x20AFA34
 .pool
 .org 0x20AF03C
-cmp r8,0x2F
+
+.if GlyphUnionNameDisplay == "False"
+cmp r8,0x30-1
+.elseif GlyphUnionNameDisplay == "True"
+cmp r8,0x30
+.endif
 .org 0x20AF050
 b TopScreenText_01
+.org 0x20AF05C
+b DisplayMainGlyphName
+b DisplaySubGlyphName
+b DisplayBackGlyphName
 .org 0x20AF104
 b TopScreenText_2E
 b TopScreenText_2F
+.if GlyphUnionNameDisplay == "False"
 mov r3,r3
+.elseif GlyphUnionNameDisplay == "True"
+b DisplayGlyphUnionName
+.endif
+
 .org 0x20AF4B0	;end loop
+.if GlyphUnionNameDisplay == "False"
 cmp r8,0x30
+.elseif GlyphUnionNameDisplay == "True"
+cmp r8,0x30+1
+.endif
 .org 0x20AF3E4
 bl CheckHPEXPAP
 mov r3,r3
@@ -53,35 +74,34 @@ ldr r6,=TopScreenTextData
 .org 0x20AFE38
 .pool
 .org 0x20AFDF0	;initial draw
-cmp r7,0x30
+cmp r7,0x30+1
 
 .org 0x20AF368
 bl CheckHPEXPAP
 mov r3,r3
 
+.org 0x20AFA38
+.dw DisplayInputToTextTableID
+
+.org 0x20AF530
+.if GlyphUnionNameDisplay == "False"
+cmp r9,0x3	;inputs for attack
+.elseif GlyphUnionNameDisplay == "True"
+cmp r9,0x4	;inputs for attack
+.endif
+
+
 .close
 
-
-/*
-24 - HP
-28 - HP value?
-26 - EXP
-2A - EXP value?
-2E - AP
-2F - AP value
-*/
 
 .open "ftc/overlay9_22", 0x2223E00
 
 
 .org 0x22B5200
-.dw BestiaryTextsData;0x22B17B8	;0x22B17B8
+.dw BestiaryTextsData;0x22B17B8
 .dw 0x1B	;0x19
-
-.org 0x22B17B8
-;.ascii "Paste-write 'bestiary_texts.bin' on top of this text. ~EgalLau37"
-;.fill 0x3F0,0x0
-;.import "bestiary_texts.bin"
+.org 0x222B220
+.dw BestiaryTextsData
 
 .org 0x222AFB0
 bl LoadEnemyAPDisplay
@@ -166,12 +186,73 @@ cmpne r8,0x2A
 cmpne r8,0x2F
 bx r14
 
+
+DisplayMainGlyphName:
+ldr r1,=0x2100790
+ldrb r1,[r1,0x2]
+cmp r1,0x4
+bne 0x20af214
+beq 0x20af264
+
+DisplaySubGlyphName:
+ldr r1,=0x2100790
+ldrb r1,[r1,0x2]
+cmp r1,0x4
+bne 0x20af23c
+beq GlyphUnionPrintName
+
+DisplayBackGlyphName:
+ldr r1,=0x2100790
+ldrb r1,[r1,0x2]
+cmp r1,0x4
+bne 0x20af264
+beq 0x20af214
+
+DisplayGlyphUnionName:
+ldr r1,=0x2100790
+ldrb r1,[r1,0x2]
+cmp r1,0x4
+bne GlyphUnionPrintName
+beq 0x20af23c
+
+GlyphUnionPrintName:
+ldr r0,[r13,0x1C]
+ldrsb r0,[r0,0xEA]
+cmp r0,0x3
+ldrge r0,[r4]
+addge r0,r0,r8,lsl 0x2
+bge 0x20AF344
+ldr r0,=0x20FFC58
+add r0,r0,0x600
+ldr r2,=0x21002D2
+ldrh r1,[r2,-0xC]
+mov r0,0x4
+bl 0x2063268
+bl 0x2063804
+mov r1,r0
+b 0x20AF344
+.pool
+
+DisplayInputToTextTableID:
+.dh 0x0
+.dh 0x20
+
+.dh 0x1
+.dh 0x21
+
+.dh 0x2
+.dh 0x22
+
+.dh 0x3
+.dh 0x31
+
+
 TopScreenTextData:
-.fill 0xAC0,0x0
+.fill 0xB10,0x0
 .org TopScreenTextData
 .ascii "Paste-write 'topScreen_texts.bin' on top of this text. ~EgalLau37"
 ;.import "topScreen_texts.bin"
-.org TopScreenTextData+0x6C0
+.org TopScreenTextData+0x708
 BestiaryTextsData:
 .ascii "Paste-write 'bestiary_texts.bin' on top of this text. ~EgalLau37"
 ;.import "bestiary_texts.bin"
