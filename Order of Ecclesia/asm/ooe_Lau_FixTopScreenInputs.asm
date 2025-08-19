@@ -30,11 +30,7 @@ bl RetrieveExactSameInputs
 .org FreeSpace
 
 RetrieveExactSameInputs:
-ldr r1,=0x2100790
-ldrb r1,[r1,0x2]
-cmp r1,0x4
-ldrne r1,=TableOfCombatInputs
-ldreq r1,=TableOfCombatInputs_Albus
+ldr r1,=TableOfCombatInputs
 ldr r0,[r1,r0,lsl 0x2]
 bx r14
 .pool
@@ -45,11 +41,5 @@ TableOfCombatInputs:
 .dw 0x435	;text ID for X button
 .dw 0x438	;text ID for R button
 .dw 0x61D
-
-TableOfCombatInputs_Albus:
-.dw 0x438	;text ID for R button
-.dw 0x61D	;text ID for glyph union
-.dw 0x436	;text ID for Y button
-.dw 0x435	;text ID for X button
 
 .close
