@@ -1,0 +1,4 @@
+
+Currently known issues:
+	→character swap allows chaining jumps infinitely
+	→character stats do not immediately update upon character swap

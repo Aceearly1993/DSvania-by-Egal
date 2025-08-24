@@ -1,0 +1,19 @@
+Castlevania - Order of Ecclesia ~ EgalLau37's tech demo project
+	Lead creator: EgalLau37
+	[Discord:			@SageMatthis#8442 ]
+	[Discord:			https://discord.gg/7QKpGC49Qk ("CV Romhacking")]
+	[Youtube:			https://www.youtube.com/channel/UCkNo0SdGvbo-iRnNrKnftIQ ]
+
+Current Version: α 0.1.0 {08/24/2025}
+Current overview:
+	♦Several quality of life changes
+	♦Additional options for New Game+
+	♦Prototype for Dual mode
+	♦Some glyph balance changes
+
+To-do:
+	☼
+
+Credits:
+	♪Masked Dedede "D3" -	pause screen portrait for Albus
+	♪LagoLunatic 	- 	DSVania + notes

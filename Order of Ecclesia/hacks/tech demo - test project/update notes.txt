@@ -1,0 +1,83 @@
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+First release (α 0.1.0) {08/24/2025} [initial release]: 
+Changelog:
+	→removed all the logo screens
+	→intro movie is skipped on boot-up
+	→changed save file text display to be more colorful
+		☼values for level/time/gold/completion are colored if the cap is reached
+		☼Shanoa's name is now dark blue
+		☼custom level caps are now reflected
+		☼if Dual mode is active, the save file displays the first initial of each character's name
+	→added more options upon starting a new game
+		☼Dual mode is unlocked after beating the game
+		☼level cap can now be set for normal difficulty
+		☼level cap can now be set to any value between 1 and 255
+			♪holding X/Y adjusts by +/-5
+			♪holding L/R sets the minimum/maximum values
+	→added additional options for New Game+
+		☼the following can be kept or reset upon New Game+:
+			♪level/EXP
+			♪attribute points
+			♪gold
+			♪glyphs
+			♪armor
+			♪consumeable items
+			♪bonus HP
+			♪bonus MP
+			♪bonus hearts
+		☼an option to toggle linear or open world
+	→the game no longer forces character IDs in Boss Rush
+	→Albus is now permitted in Practice mode
+	→the status screen is now displayed on the top screen in Practice mode
+	→the game no longer forces Magnes if Albus is the player character in Practice mode
+	→prototype for Dual mode
+		☼Shanoa/Albus can be swapped between with the Glyph sleeve button
+		☼character swap overwrites Glyph sleeve (only in this mode)
+		☼quadruple ignis requires Up+A instead (only in this mode)
+		☼runs in Shanoa mode
+	→the pause screen is now accessible in Albus mode
+	→the suspend save option is now useable in Albus mode
+	→the bestiary screen now also displays attribute points
+	→the top screen is now toggleable in Albus mode
+	→the status top screen now displays the correct glyphs to inputs for Albus
+	→the status top screen now displays additional information:
+		☼the button inputs for glyph union
+		☼the current glyph union
+		☼the current enemy's attribute points
+		☼all status ailments instead of only one
+		☼enemy weakness to torpor status
+	→weakness/resistance to status ailments palettes changed from default red/blue to green/brown
+	→tweaked several items
+		☼Super Potion now restores 9999 HP from 5000 HP
+		☼Super Tonic now restores 9999 MP from 5000 MP
+		☼boss medals now allow re-fighting the boss when used
+			♪requires defeating Dracula and unlocking Albus mode
+	→adjusted stats for several glyphs
+		☼reduced MP cost of Culter from 8 to 5
+		☼reduced MP cost of Vol Culter from 16 to 10
+		☼reduced MP cost of Melio Culter from 24 to 15
+		☼increased Cubus damage value from 5 to 12
+		☼Torpor
+			♪increased damage value from 10 to 20
+			♪increased Torpor duration from 32 to 64
+		☼changed Lapiste from Strike to Strike/Stone
+		☼increased Fulgur damage value from 5 to 7
+		☼increased Vol Fulgur damage value from 3 to 7
+		☼Morbus
+			♪increased damage value from 12 to 24
+			♪changed affinities from Curse to Poison/Curse
+			♪increased the maximum number of projectiles from 2 to 4
+		☼Nitesco
+			♪decreased damage value from 9 to 8
+			♪increased IFrames from 15 to 20
+		☼decreased Acerbatus IFrames from 60 to 30 when cast by characters other than Albus
+	→Glyph sleeve now also includes equipment
+	→pressing L/R on the equipment screen now also toggles currently equipped Glyph sleeve
+	→there is now a blue palette overlay if the player character is afflicted by poison and curse
+	→the voice language toggle now plays a voice clip based on the current player character
+	
+Bugfixes:
+	→fixed top screen inputs displaying the incorrect buttons
+	→fixed Magical ticket being useable when it should not be
+	→fixed animation palette index affecting the status ailment overlay palette index
+	
