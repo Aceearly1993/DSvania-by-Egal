@@ -515,3 +515,350 @@ palette: 22BBCBC
 state anims pointer: 2314580
 filename pointer: 2314650
 sprite asset index 4CC?
+
+
+
+21B5AC8 - checks object var A for save room direction
+0 -> 4 (left)
+=/= 0 -> 5 (right)
+
+
+
+====================================================================================
+====================================================================================
+====================================================================================
+
+
+order of ecclesia
+
+2109820 - player entity data
+21098F0 - player current states
+210992C - player current abilities
+
+2100790 - player data
+21002C0 - glyphs equipped
+2100792 - player ID
+21002B0 - display level
+210030C - current EXP
+2100310 - current gold
+2100314 - current statuses?
+210031C - current AP
+2100342 - current glyph sleeve
+2100634 - last equipped glyphs
+2100258 - 
+21002B0 - referenced when drawing enemy resist/weak
+
+204FB1C - calculates EXP required for next level
+	r0 - target level
+	(L*L+1)*((L+2)+2L)
+	
+	
+
+204B548 - sets animation states for player?
+	204B7CC - sets animation state, flying/walking?
+204718C - sets states upon volaticus activation/deactivation?
+
+2224180 - checks for status effect for top-screen text?
+2051538 - add status effect to player
+203AF54 - checks map percentage?
+
+20475B8 - plays SFX for Albus attack?
+2047B24 - determines which attack SFX routine to use
+	20472D8 - not Albus
+	20475B8 - Albus
+206E4EC - play voice clip on attack?
+	r0 - projectile entity pointer?
+	r1 - character ID to check for
+	r2 - voice clip
+	r3 - ???
+difference between JP/US = 534/0x216
+215A8E4 - JP/US voice setting
+
+2063eAC - checks item type, executes routine upon obtain (stat Ups)
+2063140 - hardcoded check for magnes item obtain
+206314C - hardcoded check for Paries item obtain
+2063154 - check for glyph union obtains?
+2063168 - check for relic
+2063174 - check for consumeables
+
+222A164 - status display, item use screen
+
+20F3688 - table of draw routines per top-screen (0xC bytes/entry)
+
+2228D10 - draws glyph sleeve icon, glyph equip screen?
+
+2226454 - update, equip screen
+22A5808 - number of elements to update, equip? 0x1A
+2151BF4 - area for graphic data, equip
+
+
+2229778 - item screen update
+	00 - cancel item select/enter screen
+	01 - no item selected
+	02 - selecting item
+	03 - item selected
+2229860 - item useability check A, camera (0xAF), 0xB7, 0xD7
+
+
+2101142 - area for inputs
+
+210068C - button configurations
+222423C - subroutine that retrieves text IDs for buttons
+20AF34C - part of routine that draws glyph names to top screen
+20F42F4+14 - 230B200 - font table, top-screen?
+
+20B6384 - table of icon graphic data for top-screen?
+	0x30 - strike?
+20F5F0C - table of affinity to flags
+20AF7DC - checks if enemy has weakness
+20AF800 - checks if enemy has resist for icon display
+20AF848 - max number of affinities to draw, top-screen
+20AF9C8 - max number of icons to draw, top-screen?
+20C5BDC - table of weak/resist icons GFX, top-screen 
+sc/f_subwob_x.dat - file with icons for top-screen?
+	16x16 in GBA graphics editor
+	palette - 20D3B8C
+	20C591C - graphic data (size, offset, palette)
+	20C5AAC - 
+	20C5DA4 - "sprite file"
+20F67AC - table of OAM offsets for affinity icons
+	0x14 bytes/entry
+20F661C - start of above table? (20AFC0C)
+
+text render format
+	0x24 bytes/entry
+	0x00 - x-pos
+	0x04 - y-pos
+	0x08 - RAM location/page-related?
+	0x0C - ???
+	0x10 - max length
+	0x14 - max number of lines?
+	0x20 - text ID OR 0xFFFF to display a variable value
+	0x22 - spacing-related?
+
+/so files
+0x00 - magic value
+0x10 - pointer to frame data (frame, frame delay)
+
+
+20FFD44 - current growths
+20FFD48 - current stats
+204FD60 - retrieves character stats on save load
+20EF1F8 - table of character base stats (0x18/character)
+	00 - attack
+	02 - defense
+	04 - str
+	06 - con
+	08 - int
+	0A - mind
+	0C - luck
+	0E - unused?
+	10 - flags?
+	12 - ???
+	14 - ???
+	16 - ???
+204FCBC - calculates actual level upon save load?
+204E59C - checks if Albus, save load, skips if not albus
+206A904 - checks if Albus, save load
+204FB78 - calculates stats based on level
+20EF194 - table of character growths (0x14/char?)
+20FFC8C - character game states?
+
+20AA62C - routine to determine which song to play per area
+20AA4D4 - plays song/SFX
+20D79DC - table of music IDs to area
+20D7954 - table of music IDs to sector (Dracula's castle)
+20F5AF0 - currently queued song?
+
+220E558 - loads one of below
+220E5BC - file select song, game clear
+220E5C0 - file select song, new game
+
+2207608 - routine for drawing cursor location?
+2219F72 - table of file select option settings? (0xC bytes/entry)
+
+22061b8 - file select/new game options routine
+	r7 = 1 = advance
+	r7 = 2 = reverse?
+	r7 = 0 = idle
+20AC0E4 - resets game state on file select, new game
+	2151D80 - flags for game start?
+		000001 - ??? (constantly toggles)
+		002000 - ??? (tends to toggle?)
+		000040 - ???
+		004000 - new game+?
+		010000 - level cap 1 unlocked?
+		020000 - albus mode
+		040000 - hard difficulty
+		080000 - level cap is 50
+		100000 - level cap is 1
+22058F4 - handles save file texts, file select screen
+2151DC0 - file data, file 2?
+	+00 - time
+	+04 - gold
+	+08 - percentage
+	+0C - level
+	+0E - ??? if non-zero, treat as new?
+	+0F - character
+	+10 - area
+	+11 - area (dracula's castle)
+	+13 - level cap
+	+14 - difficulty
+	+15 - name
+
+21515B8 - palette for upcoming text?
+	07 - Albus yellow
+	06 - tutorial blue
+	05 - brown
+	04 - red
+	03 - gray
+	02 - black/invisible?
+	01 - white
+	08 - bright red
+	09 - orange
+	0A - light yellow
+	0B - green
+	0C - light blue
+	0D - dark blue
+	0E - purple
+	0F - white
+	10 - wrong
+	
+22061B8 - routine that handles changing file select options
+2207C2C - routine that handles which texts to display?, file select
+21516F0 - area for currently selected options, new game
+21516D0 - current selection, 0x4 bytes a part
+21516D8 - current selection, description text?
+2151760 - current section of file select
+	0B - select
+	00 - file select
+	01 - delete file
+	02 - copy file
+	03 - character select
+	04 - difficulty select
+	05 - level cap select
+	07 - advance to name input?
+	12 - name input
+	0A - title screen
+20882C8 - routine for inputs, file select/new game
+
+
+2087BD0 - routine that resets selections (file select/new game)
+	
+2151634 - pre-written text?
+	
+
+2109918 - pointer to animation IDs for attacks for current player?
+
+2100388 - event flags
+
+2100398 - glyphs pickups
+21003EA - glyphs
+
+2051B64 - resets glyphs, transformations
+
+221B6A4 - check for player character 1 to talk to cats
+
+204DCC4 - check for Albus for level display
+204FE68 - check for Albus to not apply HP ups on new game for max HP?
+204FE1C - check for 600 HP from HP up items
+204FEAC - check for 300 MP from MP up items
+204FE30 - calculates max HP on save load based on current level + boosters
+	level 001 - 80
+	level 029 - 352
+		9~10 per level?
+
+205080C - check for curse to skip MP regeneration
+20516A0 - local ID of death ring for damage = max HP
+2050B1C - routine for temporary stat boosts from accessories
+
+207D35C - check for player character 3 for spikebreaker
+206BE7C - check for player character 3
+204CDE0 - plays animations
+
+229FC24 - check for flag 0x800000 for spikebreaker
+
+
+2213F28 - sets next screen to 0x5
+2213E34 - sets next screen to 0x4
+22142EC - checks inputs to skip intro
+2214244 - checks state for what to do with intro?
+22140E4 - sets next screen?
+202D7A0 - sets bottom screen screen
+20657F8 - sets top screen screen?
+220ECC8 - checks for whether to advance to intro movie from title?
+	220ED70 - checks time passed for whether to advance?
+
+screen IDs:
+top:
+0x4 - title screen blue rectangle
+0x6 - Dracula's castle warp card
+0x8 - Wygol village map
+
+bottom:
+
+
+2007080 - retrieves start of scratch freespace?
+2049824 - checks for glyph sleeve
+20497D4 - changes glyhs with glyph sleeve
+20475B8 - check for Albus moveset
+2047918 - check for quadruple ignis
+
+2227E84 - check for glyph sleeve ID for equip?
+22286C4 - glyph sleeve check, inputs, glyph equip screen
+208AA54 - glyph sleeve check
+2228D08 - letter display, equip screen
+
+2027D74 - sets freespace areas
+20840D4 - specifically loads asset 0x346, title screen
+
+2232C90 - loads textbox (8F5)?
+
+22C26D0 - loads text ID 663 when talk to Albus at opening
+
+229D274 - loads text ID 44A for up-press at statue
+
+2232378 - sets up parameters for dialogue textbox
+209C9E4 - loads textbox, save prompt
+	r0 - y-position
+	r1 - height
+	r2 - text ID
+	r3 - palette index
+	[r13] - type? 16 = yes/no dialogue, 17 also loads
+		02 - yes/no prompt?
+209CA30 - default height for textbox (0x88)
+209CA44 - default position for textbox (0x32)
+209CAE8 - loads dialogue textbox
+	r0 - y-position
+	r1 - height
+	r2 - name text ID...?
+	r3 - palette index
+	[r13] - palette index?
+209CB38 - default height for textbox (0x78)
+209CB50 - default position for textbox (0x42)
+20F4A14 - palette table for textbox?
+2159A30 - active textbox data?
+	+1C - current palette
+	+14 - current y-position
+	+16 - current height
+
+text codes
+E7 - change name
+E3 - portrait
+
+202B358 - sprite draw, orientation
+flags:
+	0x080 - y-axis flip
+	0x100 - x-axis flip
+	0x008 - use entity properties for flip
+
+204A640 - checks if player face left
+
+2232554 - text codes check
+2085CE4 - text codes check, top-screen texts?
+2086800
+	C2 - 
+
+20D1780 - palette for cursor, not save menu
+
+20D8CE0 - asset table
