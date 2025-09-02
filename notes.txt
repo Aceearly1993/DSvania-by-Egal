@@ -529,50 +529,91 @@ sprite asset index 4CC?
 ====================================================================================
 
 
+
 order of ecclesia
 
 2109820 - player entity data
 21098F0 - player current states
 210992C - player current abilities
+2109904 - player misc flags
 
-2100790 - player data
+player data:
+2100790 - mode ID
+	00 - story/Shanoa
+	01 - extra/Albus
+	02 - Boss rush
+	03 - ???checked by 204E3E0 along with mode 0x0, hides HP/MP/hearts GUI, disables pause
+	04 - Practice mode
 21002C0 - glyphs equipped
-2100792 - player ID
+2100792 - character ID
+2100793 - character 2 ID?
+2100794 - difficulty
+2100795 - current character ID?
+2100796 - active character (lead/partner)?
+2100797 - volume BGM
+2100798 - volume SFX
+2100799 - volume voice
+210079A - level cap
+
 21002B0 - display level
 210030C - current EXP
-2100310 - current gold
 2100314 - current statuses?
-210031C - current AP
-2100342 - current glyph sleeve
 2100634 - last equipped glyphs
 2100258 - 
 21002B0 - referenced when drawing enemy resist/weak
+21002B4 - HP
+21007D4 - save file ID
+21007D5 - 00 = new game, 01 = loading existing save file?
+2100342 - set to 0x0 at game start?
+2100310 - gold (set to 0x5DC at game start)
+210068E
 
-204FB1C - calculates EXP required for next level
-	r0 - target level
-	(L*L+1)*((L+2)+2L)
+20FFD20 - player 1 entity pointer?
+20FFD24 - player 2 entity pointer?
+
+
+2215160 = check for debug flags?
+21527D8 - area of universal flags?
+	21527D8
+		
+	21527DC
+		
+	21527E0
+		01 - debug?
+2152818 - area of universal flags 2?
+	01 - debug?
 	
-	
+
+2050DA8 - routine that clears status upon game load
+2051B64 - sets equipment on game start?
+20AD160 - loads save data block based on save file ID
+	r0 - save file ID to load
+	returns r0 = 1 if successfully loads file
+202CCE8 - loads save data block from offset
+	r0 - offset from save data to load (0x690/file,0x193C = suspend)
+20ACB68 - retrieves save file ID
 
 204B548 - sets animation states for player?
 	204B7CC - sets animation state, flying/walking?
 204718C - sets states upon volaticus activation/deactivation?
 
+20483F4 - checks for head smashability
+	2048420 - minimum momentum for head smash
+204A65C - checks for player sprite flip
+
 2224180 - checks for status effect for top-screen text?
 2051538 - add status effect to player
-203AF54 - checks map percentage?
 
-20475B8 - plays SFX for Albus attack?
-2047B24 - determines which attack SFX routine to use
-	20472D8 - not Albus
-	20475B8 - Albus
-206E4EC - play voice clip on attack?
-	r0 - projectile entity pointer?
-	r1 - character ID to check for
-	r2 - voice clip
-	r3 - ???
-difference between JP/US = 534/0x216
-215A8E4 - JP/US voice setting
+23BC610 - area for worldmap icons to display
+23BC614 - area just left
+22B5D60 - table of world map location data
+	0x00 - x-coord
+	0x02 - y-coord
+23BC560 - ??? set to 0x12
+223BB90 - max number of worldmap locations?
+223B684 - worldmap icon draw code
+	223B794 - hardcoded offset for icon ID for worldmap icon
+	223B694 - hardcoded offset for icon ID for worldmap icon
 
 2063eAC - checks item type, executes routine upon obtain (stat Ups)
 2063140 - hardcoded check for magnes item obtain
@@ -581,16 +622,7 @@ difference between JP/US = 534/0x216
 2063168 - check for relic
 2063174 - check for consumeables
 
-222A164 - status display, item use screen
-
 20F3688 - table of draw routines per top-screen (0xC bytes/entry)
-
-2228D10 - draws glyph sleeve icon, glyph equip screen?
-
-2226454 - update, equip screen
-22A5808 - number of elements to update, equip? 0x1A
-2151BF4 - area for graphic data, equip
-
 
 2229778 - item screen update
 	00 - cancel item select/enter screen
@@ -599,6 +631,21 @@ difference between JP/US = 534/0x216
 	03 - item selected
 2229860 - item useability check A, camera (0xAF), 0xB7, 0xD7
 
+2046D24 - MP cost for High jump
+2046D2C - MP cost for High jump
+
+
+206DD28 - checks glyph type for glyph color
+206DD8C - checks glyph type for glyph shape
+206A664 - checks glyph type?
+	20F3B84 - IDs for glyph types?
+206A694 - routine to perform glyph type offset
+	20F3B76 - IDs for glyph shapes
+		182 - nothing
+		183 - triangle
+		184 - round
+		185 - round
+		186 - round
 
 2101142 - area for inputs
 
@@ -625,12 +672,12 @@ sc/f_subwob_x.dat - file with icons for top-screen?
 	0x14 bytes/entry
 20F661C - start of above table? (20AFC0C)
 
-text render format
+bestiary text format
 	0x24 bytes/entry
 	0x00 - x-pos
 	0x04 - y-pos
 	0x08 - RAM location/page-related?
-	0x0C - ???
+	
 	0x10 - max length
 	0x14 - max number of lines?
 	0x20 - text ID OR 0xFFFF to display a variable value
@@ -698,13 +745,40 @@ text render format
 	+04 - gold
 	+08 - percentage
 	+0C - level
-	+0E - ??? if non-zero, treat as new?
+	+0E - available options (01 - new game 02 = suspend, 04 = new game)
 	+0F - character
 	+10 - area
 	+11 - area (dracula's castle)
 	+13 - level cap
 	+14 - difficulty
 	+15 - name
+	
+2151D84 - file select, suspend/new game selection
+	40 - suspend
+	80 - new game?
+
+20AC6B0 - checks which file to attach suspend data to
+20AD474 - 
+21DD04C - save data related?
+21DD054 - save data status, checked if invalid load file?
+	00 - normal load (set if valid save file ID loaded)
+	01 - normal save
+	02 - save data corrupt message
+	03 - data load file message
+21DD05C - save data status (suspend, new game)
+	0xC0000000 - suspend next to file 3
+	0x80000000 - suspend next to file 2
+	0x40000000 - suspend next to file 1
+	0x01000000 - copy source file, file 1
+	0x04000000 - copy source file, file 2
+	0x08000000 - copy source file, file 3?
+	0x20 - ??? set when resuming suspend save
+	0x2 - file 2 has data
+	0x1 - fiel 1 has data
+21DD060 - save data status p2 (suspend, new game)
+	0x08 - NG+, file 1
+	0x10 - NG+, file 2
+	0x20 - NG+, file 3
 
 21515B8 - palette for upcoming text?
 	07 - Albus yellow
@@ -836,7 +910,8 @@ bottom:
 	[r13] - palette index?
 209CB38 - default height for textbox (0x78)
 209CB50 - default position for textbox (0x42)
-20F4A14 - palette table for textbox?
+20F4A14 - palette table for textbox? (0x10 bytes/entry)
+	-there are three other pointers that are +4,+8,+C
 2159A30 - active textbox data?
 	+1C - current palette
 	+14 - current y-position
@@ -845,6 +920,7 @@ bottom:
 text codes
 E7 - change name
 E3 - portrait
+E8 - change text color
 
 202B358 - sprite draw, orientation
 flags:
@@ -862,3 +938,7 @@ flags:
 20D1780 - palette for cursor, not save menu
 
 20D8CE0 - asset table
+
+22B5B1C - table of GFX IDs per portrait ID
+22B5B8C - table of palette pointers per portrait ID
+	redundant because all portraits load then read from same address
