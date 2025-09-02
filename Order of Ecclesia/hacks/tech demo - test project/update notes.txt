@@ -1,4 +1,41 @@
 ↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+Second release (α 0.2.0) {09/02/2025}: 
+
+Changelog:
+	→assigned custom colors to several glyphs
+	→added SFX for headsmashing
+	→changed worldmap music to Welcome to Legend during postgame
+	→added custom textbox gradients for several characters
+	→when starting new game, the game instead sets inventory/gold if the current amounts are less than the initial amounts
+	→the game now no longer always forces Albus's boots/accessories on game load (non-Dual mode)
+	→the game now also gives Albus's starting equipment
+	→starting New Game+ no longer sets character ID and mode ID
+	→the game no longer clears status ailments when loading a suspend save file
+	→tweaked several texts
+	→adjusted stats for several glyphs
+		☼Arcus
+			♪damage increased from 6 -> 7
+			♪decreased draw time
+		☼Vol Arcus
+			♪damage increased from 9 -> 10
+			♪decreased draw time
+		☼Melio Arcus
+			♪damage increased from 9 -> 12
+			♪decreased draw time
+		☼Dextro Custos affinity changed from slash -> slash/fire
+		☼Sinestro Custos affinity changed from slash -> slash/ice
+		☼Ignis damage decreased from 9 -> 8
+		☼Grando damage increased from 8 -> 9
+		☼Vol Fulgur damage increased from 7 -> 9
+		☼glyph union Thor damage increased from 4 -> 10
+
+Bugfixes:
+	→fixed game crash relating to player draw routine
+	→fixed medals not working properly
+	→fixed initial equipment not being equipped at new game start
+
+
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
 First release (α 0.1.0) {08/24/2025} [initial release]: 
 Changelog:
 	→removed all the logo screens
@@ -70,6 +107,7 @@ Changelog:
 		☼Nitesco
 			♪decreased damage value from 9 to 8
 			♪increased IFrames from 15 to 20
+			♪MP cost increased from 20 to 30
 		☼decreased Acerbatus IFrames from 60 to 30 when cast by characters other than Albus
 	→Glyph sleeve now also includes equipment
 	→pressing L/R on the equipment screen now also toggles currently equipped Glyph sleeve
