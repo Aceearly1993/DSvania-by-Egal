@@ -33,6 +33,8 @@ Bugfixes:
 	→fixed game crash relating to player draw routine
 	→fixed medals not working properly
 	→fixed initial equipment not being equipped at new game start
+	→fixed button configuration settings not working
+	→fixed game crash relating to equip screen
 
 
 ↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
