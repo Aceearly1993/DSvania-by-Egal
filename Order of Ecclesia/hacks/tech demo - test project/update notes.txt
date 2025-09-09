@@ -1,4 +1,40 @@
 ↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+Third release (α 0.3.0) {09/09/2025}: 
+
+Changelog:
+	→added inter-area warps patch from DSVania	
+		☼added SFX for switching area maps
+		☼only available during New Game+
+		☼warping to a different area randomizes chest items
+	→the game now checks for whether the warp index IDs are different rather than top-screen IDs for whether to play an SFX when changing warp indexes
+	→added touch screen controls for several menus
+		☼title screen
+		☼Game Start main menu and file select
+		☼game over screen
+		☼Sound Mode menu
+		☼Boss rush file select and course selection
+		☼Practice mode file select and course selection
+	→changed Boss rush level cap and course
+		☼added Giant Skeleton to the course
+		☼added Wallman to the course
+			♪Wallman is skipped for solo Albus
+		☼all bosses are now fought in both courses
+		☼the difficulty for both courses is set to hard
+		☼the level caps have been adjusted to 25 and 1
+	→the game over screen now plays the 8bit game over theme if a record was playing while dying
+	→added a few items to several item pools
+	→when changing language in Sound Mode, there is a random chance to play a voice clip from Shanoa, Albus, Barlowe, or Dracula instead
+	→disabled text language select on new game
+	→disabled text language select option when holding L+R on bootup
+	→the R button can now cycle backwards on the Item Guide menu
+
+Bugfixes:
+	→fixed certain texts displaying on the incorrect line on the Copy Data screen
+	→fixed game hanging when attempting to detonate the sea mines in Kalidus Channel
+	→fixed the game calculating the map percentage for Wygol village instead of Ecclesia when opening the map pause menu while in Wygol village 
+
+
+→↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
 Second release (α 0.2.0) {09/02/2025}: 
 
 Changelog:
