@@ -1,4 +1,41 @@
 ↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+Fourth release (α 0.4.0) {09/22/2025}: 
+
+Changelog:
+	→changed game icon
+	→added touch screen compatability to more menus
+	→attempting to toggle an unobtained relic no longer equips the relic or plays the positive sound effect
+	→glyphs/equipment can no longer be switched if unarmed/nothing is the only option
+	→switching characters now correctly updates base stats
+	→untransforming from transformation glyphs now reverts to the current character instead of always Shanoa
+	→the Tin Man enemies in Barracks can now roll off ledges
+	→reduced the Practice mode level from 50 to 25
+	→the game will now freeze-pause while transformed
+	→the game will now freeze-pause while in Practice mode
+	→removed hardcoded check for Shanoa for the glyph absorption outline
+	→added a return button graphic to the pause menu/submenus and game start menus
+	→the top-screen enemy entry is no longer reset when loading a save file
+	→moved the heart generator in Wygol village next to the save statue
+	→the level/pause display palette now changes depending on the active character ID
+	→adjusted position of L/R cursors on Term guide menu
+	→a corresponding character graphic is now displayed for all the Record displays
+	→changed boss medals to now correctly check for Dracula's defeat to be useable
+	→changed worldmap music to instead check for Dracula's defeat for playing Welcome to Legend
+	→the hard difficulty game clear rewards now check for the level cap to be less than or equal to instead of exactly equal to specific values
+	→the hard difficulty bonus damage for level cap 1 has been changed to instead apply if the level cap is less than 50
+	→the level display now shows the remaining levels until the level cap and the level cap
+	→changed the facing direction of many chests
+	→changed Rapidus Fio to change affinity and color depending on current area
+	→male characters now transform into a different robot when using Arma Machina
+
+Bugfixes:
+	→fixed Tin Man enemies causing the game to infintely loop when rolling off ledges
+	→fixed Glyph sleeve not toggling properly during main gameplay
+	→fixed cursor move SFX constantly playing while viewing friend list and friend code
+	→fixed status removing use items not playing a negative SFX if the item could not be used
+
+
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
 Third release (α 0.3.0) {09/09/2025}: 
 
 Changelog:
