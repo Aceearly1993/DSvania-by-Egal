@@ -11,7 +11,6 @@ Changelog:
 	→the Tin Man enemies in Barracks can now roll off ledges
 	→reduced the Practice mode level from 50 to 25
 	→the game will now freeze-pause while transformed
-	→the game will now freeze-pause while in Practice mode
 	→removed hardcoded check for Shanoa for the glyph absorption outline
 	→added a return button graphic to the pause menu/submenus and game start menus
 	→the top-screen enemy entry is no longer reset when loading a save file
