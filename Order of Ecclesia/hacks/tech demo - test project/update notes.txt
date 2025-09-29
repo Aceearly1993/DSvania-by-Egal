@@ -1,4 +1,63 @@
 ↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+Sixth release (α 0.5.0) {09/29/2025}: 
+
+Changelog:
+	→added 0x6B/107 new items, ported from previous games
+		☼32 new consumeables
+		☼32 new chestplates
+		☼16 new helmets
+		☼12 new boots
+		☼16 new accessories
+	→made changes to several pre-existing items
+		☼Amanita now damages hearts instead
+		☼Spoiled Milk now damages MP and increments the MP regeneration delay instead
+		☼Redire affinities has been changed from Slash -> Slash/Electric
+		☼Globus affinities has been changed from Strike -> Fire/Ice/Electric
+		☼Priestess Ring now boosts Mind in proportion to total AP
+		☼Empress Ring now boosts recovery from MP restoration items
+		☼Chariot Ring now boosts Constitution in proportion to total AP
+		☼Hermit Ring now reduces MP cost by -25% base cost
+		☼Strength Ring now grants +25% base Strength and -25% base Intellegence
+		☼Death Ring now causes the player to always receive 44,444 damage
+		☼Temperance Ring now causes the player to take 50% damage but deal 75% damage
+		☼Tower Ring stats have been changed from -10 Str/Con/Int/Mnd/Luck -> -5
+		☼World Ring now boosts stats in proportion to total map completion rate
+	→changed the description of several items to more accurately state their effects
+	→HP Max Up, MP Max UP, HEART Max Up, Camera, Sketchbook, and Phonograph no longer display quantities on the Use Item menu
+	→boss medal chests are now purple
+	→Dracula's boss medal chest is now black
+	→changed the enemy item drops for some enemies
+	→changed the contents of some red chests
+	→when taking damage, the actual amount of damage taken is now always shown instead of the default base damage
+	→a gift now appears in Wygol village on the player's birthday
+	→various entity hiders now hide if the difficulty is equal to 00 (normal) instead of not equal to 01 (hard)
+	→added new item pools for wooden chests
+	→changed which item pools are referenced for Lighthouse, Giant's Dwelling, Mystery Manor, and Oblivion Ridge
+	→made changes to entity lists in some areas
+		☼Monastery
+			♪in room 12-00-0D, two Skull Archers and a bat spawner were added (hard difficulty)
+		☼Lighthouse
+			♪in room 09-00-03, two wooden chests were added
+		☼Giant's Dwelling
+			♪in room 0D-00-0B, a Curse Diva (hard difficulty), Ladycat (hard difficulty), and wooden chest were added
+			♪in room 0D-00-11, two Curse Diva (hard difficulty) and a wooden chest were added
+		☼Mystery Manor
+			♪in room 0E-00-06, two Mad Butcher (hard difficulty) and wooden chest were added
+			♪in room 0E-00-03, two Fleaman (hard difficulty), one Mad Butcher (hard difficulty), and two wooden chests were added
+	→changed the contents of some hidden pickups
+	→re-opening the DS after closing it now plays an SFX
+	→the outdoor background in Wygol village now changes based on the time of day
+	→changed the starting inventory from 1x High Tonic -> 3x Tonic
+	→the game now grants all default relics based on mode ID instead of character ID when starting new game
+	→the game now displays a proper error message when attempting to change equipment with nothing to equip
+
+Bugfixes:
+	→fixed items not being useable during boss fights
+	→fixed oversight that caused the game to crash when attempting to randomize Wygol village chests
+	→fixed oversight that caused the game to crash when starting a new game
+
+
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
 Fourth release (α 0.4.0) {09/22/2025}: 
 
 Changelog:
