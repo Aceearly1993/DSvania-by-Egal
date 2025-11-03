@@ -1,0 +1,63 @@
+
+First release (α 0.1.0) {11/02/2025} [initial release]: 
+
+Changelog:
+	→added Soma, Julius, and Alucard character modes
+	→added Soma, Hammer, Julius, Yoko, and Alucard as playable characters
+	→the level cap can now be set to any value from 1 to 255 on Normal and Hard difficulties
+	→Stella, Loretta, Richter, Maria, Old Axe Armor, Julius, Yoko, and Alucard now start with one Record Player and one of every standard Record
+	→added inter-area warps
+	→the standard pause menu is now available in other modes
+	→disabled Equip and Talk options in pause menu outside of story gamemodes
+	→the Use item screen now displays character icons for the current characters instead of always Jonathan/Charlotte
+	→spells can now be mastered
+	→the current level is now always displayed on the bottom screen
+	→the current level now changes color depending on the currently active character
+	→the game now skips the company name screens on boot-up
+	→adjusted AI for Behemoth so that Behemoth will no longer attack with its tongue if it is too close to a wall
+	→tweaked partner AI for compatability with additional weapon types
+	→item icons now appear on the Use item screen
+	→character and difficulty are now always displayed on file select screen
+		☼normal difficulty now also displays level cap
+	→increased level cap display to allow three digits
+	→all modes can now access New Game+ upon beating the game
+	→all modes can now receive the New Game+ reward items upon beating the game
+	→changed the requirement for New Game+ reward items to be less than or equal to the level cap instead of the exact value
+	→changed Suspend and CLEAR graphics on file select screen
+	→all status ailments are displayed on the top-screen instead of one with the highest priority
+	→a different palette is now used when afflicted by both Poison and Curse
+	→the stat boost graphics from the boost spells is offset to not cover the level display
+	→the textbox gradient changes depending on which character is speaking
+	→relic item icons are now displayed on the relic screen
+	→added several new weapons
+	→tweaked the layout of Buried Chamber
+	→the pop-up textbox background color now changes depending on the character mode
+	→the partner character now up-poses when the main partner up-poses
+	→Whip's Memory now remembers who partner 1 is when returning from the fight instead of always replacing partner 1 with Charlotte
+	→Whip's Memory can now only be fought in Jonathan character mode
+	→beating the game on hard difficulty, level cap =< 50 now also grants a Master Potion
+	→beating the game on hard difficulty, level cap =< 1 now also grants a Master Record
+	→changed the location of Sanctuary
+	→transition rooms are now marked light green on maps
+	→hidden rooms are now marked dark green on maps
+	→changed SFX played when using Magical Ticket
+	→the Guide->Item screen now displays standard size character icons for the current characters instead of always Jonathan/Charlotte and no longer displays J/C next to item names
+	→HP Max UP and MP Max Up are now viewable in the Guide->Item screen
+	→status ailments are no longer cleared when loading a Suspend save
+	→there are now two Doppelgangers that copy both partners in Nest of Evil
+	→removed hardcoding from Doppelganger that prevented it from copying Stella/Loretta
+	→if invalid weapons or skills are equipped, Doppelganger will instead automatically equip valid ones
+	→the final room in Nest of Evil now grants additional rewards based on current character mode
+
+Bugfixes:
+	→fixed Death softlock
+	→fixed oversight that allowed obtaining infinite quest rewards
+	→fixed generic The Creature enemies also setting its boss defeat flag
+	→fixed missing SFX when scrolling the use item list using the Touch Screen
+	→fixed missing SFX when scrolling the equip list using the Touch Screen
+	→fixed missing SFX when scrolling the relic list using the Touch Screen
+	→fixed missing SFX when scrolling the skill list using the Touch Screen
+	→fixed missing SFX when scrolling the shop list using the Touch Screen
+	→fixed missing SFX when scrolling the guide lists using the Touch Screen
+	→fixed missing SFX when scrolling the guide quest list using the Touch Screen
+	→fixed missing SFX when scrolling the enemy list using the Touch Screen
