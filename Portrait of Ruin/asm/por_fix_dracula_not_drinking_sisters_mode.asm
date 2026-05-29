@@ -8,7 +8,7 @@
 
 ; by EgalLau37
 
-.open "ftc/overlay9_87" 0x22E8820
+.open "ftc/overlay9_87", 0x22E8820
 .org 0x22E8DCC
 cmp r0,0x2
 blt 0x22E8E10
