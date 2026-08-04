@@ -1,5 +1,33 @@
 ↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+Second release (1.1.0) {08/04/2026} [balance patch]: 
+
+Changelog:
+	→restored some JP voice clips
+	→Hammer now appears in the epilogue cutscene for Julius mode
+	→the Julius mode GUI now changes color based on current character
+	→Hammer now has Bomber Armor as his subweapon
+	→changed some weapon properties when wielded by Hammer
+		☼throwing weapons are now twice as fast and have 1/4 IFrames
+		☼RPG damage formula is now ((100/4)+level)
+		☼Bomber Armor bombs are always level 3
+	→added missing voice clips to Sound Mode from the JP version
+	→the dialogue textbox now changes color depending on the speaker
+	→Enemy Set mode now allows all enemies to be placed
+	→Enemy Set mode no longer checks for quantity of souls owned for placement
+	→the area where enemies can be placed in Enemy Set mode has been increased
+	→the enemy point total is now based on quantity of enemies instead of cost
+	→Enemy Set mode is now accessible with Julius mode files
+	→New Game+ is now available for Julius Mode
+		☼Hard mode is also available for Julius mode
+
+Bugfixes:
+	→fixed Hammer starting with the incorrect weapon equipped when loading a save
+	→fixed oversight that caused Soma's equipment to be replaced by his default Julius mode loadout during Boss Rush and Enemy Set modes
+
+
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
 First release (1.0.0) {04/05/2025} [initial release]: 
+
 Changelog:
 	→added Hammer as a playable character
 	→the boot-up screens are now mostly skipped
