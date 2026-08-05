@@ -1,0 +1,59 @@
+
+JP:
+20f74B0 - HP/MP/souls
+20F72F6 - mode/character flags
+20F7270 - inventory area
+20F7924 - weapons
+
+21EED40 - use item screen update?
+0x2210488
+22104bc - soulgetownenum
+0x21e7bc8  - GetOwnedItemNum
+2034CBC - yoko shop update
+2037624 - hammer shop update
+
+2029C78 - PlaySFX
+
+209E920 - SFX table, sound mode
+
+US:
+2034c24 - yoko shop update
+2037580 - hammer shop update
+202DC38 - creates textbox object
+202EC8C - renders textbox border frame?
+202A4C4 - textbox update?
+202A974 - texts-related, includes portrait load
+
+20F7554 - textbox properties
+	20F752A - text position
+	20F7557 - button animation-related
+	20F754A - palette
+
+204B5B8 - enemy set mode update
+204BCDC - sets up room with enemy data
+204A748 - creates soul list for current category
+	20F1BAC - enemy points for current room
+	20F1BA0 - current category
+	20F72FC - list of soul IDs for rooms
+	20F1BB4 - whether soul is in valid area
+
+204D708 - sound mode update
+209EA10 - SFX table, sound mode
+
+21FFA54 - related to level calculations
+
+2011A94 - retrieve base file screen data address
+
+20F1BA4 - related to available options?
+2042D1C - file select update, main
+2043384 - file select update sub, main
+210aa21 - area related to file data for file select screen?
+210AA2A - new game plus
+
+2010E30 - sets new game+ status + other flags
+
+222E5E4 - base HP
+222E5E8 - base MP
+
+
+21F9D84 - minimum fall momentum to trigger state 0x8

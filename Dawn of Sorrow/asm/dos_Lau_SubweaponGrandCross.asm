@@ -1,0 +1,480 @@
+.nds
+.relativeinclude on
+.erroronwarning on
+
+; This is an optimized copy of the Grand Cross subweapon code
+; that includes the code from the JP version that plays
+; Julius's voice clips which were removed from the US version.
+
+; by EgalLau37
+
+.open "ftc/overlay9_0", 0x219E3E0
+
+.org 0x22012c0
+.area 0x738,0x69
+func_ov000_022012c0:
+SubweaponGrandCross_Cast:
+stmfd r13!,{r4-r11,r14}
+mov r5,r0
+ldr r4,[r5,0x214]
+bl 0x220ea58
+cmp r0,0x0
+beq _02201314
+ldr r0,[r5,0x210]
+tst r0,0x2
+ldmnefd r13!,{r4-r11,r15}
+mov r0,0x3
+bl 0x201ad60
+ldr r0,[r4,0x18+0xD0]
+bic r0,r0,0x3
+str r0,[r4,0x18+0xD0]
+ldmfd r13!,{r4-r11,r15}
+_02201314:
+ldr r1,[r4,0xd0]
+ldr r0,=0x200008
+tst r1,r0
+beq _0220135c
+ldr r0,[r5,0x210]
+tst r0,0x2
+bne _02201348
+mov r0,0x3
+bl 0x201ad60
+ldr r0,[r4,0x18+0xD0]
+bic r0,r0,0x3
+str r0,[r4,0x18+0xD0]
+_02201348:
+mov r0,r5
+bl 0x2012ae0
+ldmfd r13!,{r4-r11,r15}
+_0220135c:
+ldr r0,[r5,0x210]
+tst r0,0x2
+bne _022013a0
+ldrb r0,[r4,0xd]
+cmp r0,0x16
+bne _022013a0
+mov r0,0x3
+bl 0x201ad60
+ldr r0,[r4,0x18+0xD0]
+bic r0,r0,0x3
+str r0,[r4,0x18+0xD0]
+mov r0,r5
+bl 0x2012ae0
+ldmfd r13!,{r4-r11,r15}
+_022013a0:
+sub r13,r13,0x34
+ldr r0,[r4,0x18+0xD0]
+orr r0,r0,0x3
+str r0,[r4,0x18+0xD0]
+ldr r0,[r4,0x2c]
+str r0,[r5,0x2c]
+ldr r0,[r4,0x30]
+str r0,[r5,0x30]
+ldrb r0,[r5,0xd]
+cmp r0,0x4
+addls r15,r15,r0,lsl 0x2
+b _022018d4
+b _022013e4 ; case 0
+b _02201470 ; case 1
+b _022016a8 ; case 2
+b _022016e8 ; case 3
+b _02201884 ; case 4
+_022013e4:
+ldr r0,[r5,0x210]
+tst r0,0x2
+bne _022013fc
+mov r0,r5
+ldr r1,=0x220e8e0
+bl 0x2012a90
+_022013fc:
+ldr r3,=0x5980
+str r3,[r5,0x34]
+mov r0,r4
+mov r1,0x19
+mov r2,0x0
+bl 0x220f554
+mov r0,r5
+ldr r1,=0x512d
+bl 0x220f1bc	;0x220f3dc - JP
+add r1,r5,0x2c
+ldmfd r1,{r1,r2,r3}
+ldr r0,=0x1b6
+bl 0x2029b38
+mov r0,r5
+mov r1,0x0
+mov r2,0x0
+bl 0x220e994
+mov r0,r5
+mov r1,0x14
+bl 0x2014374
+ldr r0,=0x21c5250
+str r0,[r5,0x4]
+ldr r2,[r5,0x70]
+orr r2,r2,0x8
+str r2,[r5,0x70]
+mov r1,0x10
+strb r1,[r5,0x81]
+mov r0,0x38
+strh r0,[r5,0x1a]
+mov r0,0x1
+strb r0,[r5,0xd]
+b _022018d4
+_02201470:
+add r0,r5,0x2c
+add r3,r13,0x1c
+ldmfd r0,{r0,r1,r2}
+stmfd r3,{r0,r1,r2}
+ldr r1,[r13,0x20]
+sub r1,r1,0x20000
+str r1,[r13,0x20]
+mov r0,0x10000
+bl 0x2012d38
+mov r1,0x10
+str r1,[r13,0x0]
+ldr r2,=0x2217d4c
+ldrb r6,[r2,0x0]
+ldrb r3,[r2,0x1]
+mov r0,r0,lsl 0x10
+strb r6,[r13,0x4]
+strb r3,[r13,0x5]
+ldrb r6,[r2,0x2]
+ldrb r3,[r2,0x3]
+add r2,r13,0x1c
+strb r6,[r13,0x6]
+strb r3,[r13,0x7]
+ldr r1,=0x2217d50
+ldrb r7,[r1,0x0]
+ldrb r6,[r1,0x1]
+mov r3,r0,asr 0x10
+strb r7,[r13,0x8]
+strb r6,[r13,0x9]
+ldrb r6,[r1,0x2]
+ldrb r0,[r1,0x3]
+strb r6,[r13,0xa]
+strb r0,[r13,0xb]
+ldmfd r2,{r0,r1,r2}
+bl 0x201e490
+cmp r0,0x0
+beq _0220150c
+mov r1,0x800
+mov r2,0x4000
+bl 0x201e614
+_0220150c:
+ldrsh r0,[r5,0x18]
+tst r0,0x1
+bne _022015c4
+mov r0,0x10000
+bl 0x2012d38
+mov r0,r0,lsl 0x10
+mov r0,r0,asr 0x10
+mov r1,r0,lsl 0x10
+mov r2,r1,lsr 0x10
+add r0,r13,0x28
+mov r1,0x80000
+bl 0x201c6b8
+ldr r2,[r5,0x2c]
+ldr r1,[r13,0x28]
+ldr r0,[r13,0x2c]
+add r1,r2,r1
+str r1,[r13,0x1c]
+ldr r2,[r5,0x30]
+add r0,r2,r0
+sub r0,r0,0x20000
+str r0,[r13,0x20]
+ldr r2,[r5,0x34]
+str r2,[r13,0x24]
+mov r1,0x30
+str r1,[r13,0x0]
+add r0,r13,0x1c
+ldmfd r0,{r0,r1,r2}
+mov r3,0x28
+bl 0x201a598
+cmp r0,0x0
+beq _022015c4
+ldr r1,[r13,0x28]
+ldr r2,=0x2aaaaaab
+rsb r3,r1,0x0
+smull r1,r6,r2,r3
+mov r6,r6,asr 0x1
+mov r1,r3,lsr 0x1f
+add r6,r1,r6
+str r6,[r0,0x38]
+ldr r1,[r13,0x2c]
+rsb r3,r1,0x0
+smull r1,r6,r2,r3
+mov r6,r6,asr 0x1
+mov r1,r3,lsr 0x1f
+add r6,r1,r6
+str r6,[r0,0x3c]
+_022015c4:
+ldr r0,[r5,0x210]
+tst r0,0x2
+bne _02201664
+ldrsh r0,[r5,0x1a]
+tst r0,0x7
+bne _02201664
+ldrsh r2,[r4,0x74]
+str r2,[r13,0x0]
+mov r0,0x10
+str r0,[r13,0x4]
+str r0,[r13,0x8]
+mov r1,0x0
+str r1,[r13,0xc]
+add r1,r4,0x2c
+ldmfd r1,{r1,r2,r3}
+mov r0,r4
+bl 0x2018cbc
+cmp r0,0x0
+beq _02201664
+ldr r2,[r0,0x70]
+orr r2,r2,0x60
+str r2,[r0,0x70]
+mov r1,0x48
+strh r1,[r0,0x76]
+mov r1,0x80
+str r1,[r0,0x44]
+mov r2,0x100
+ldr r1,=0x2217d54
+str r2,[r0,0x48]
+ldrb r3,[r1,0x0]
+ldrb r2,[r1,0x1]
+sub r6,r13,0x4
+strb r3,[r6,0x0]
+strb r2,[r6,0x1]
+ldrb r2,[r1,0x2]
+ldrb r1,[r1,0x3]
+strb r2,[r6,0x2]
+strb r1,[r6,0x3]
+ldmfd r6,{r1}
+bl 0x201c040
+_02201664:
+ldrsh r0,[r5,0x1a]
+sub r0,r0,0x1
+strh r0,[r5,0x1a]
+cmp r0,0x0
+bne _022018d4
+mov r0,r4
+mov r1,0x1a
+mov r2,0x0
+bl 0x220f554
+mov r0,r5
+ldr r1,=0x512e
+bl 0x220f1bc	;0x220f3dc - JP
+add r0,r5,0x2c
+ldmfd r0,{r1,r2,r3}
+ldr r0,=0x1b7
+bl 0x2029b38
+mov r0,0x2
+strb r0,[r5,0xd]
+b _022018d4
+_022016a8:
+mov r0,0x1
+strb r0,[r5,0xe]
+ldr r0,[r5,0x14]
+add r0,r0,0x200
+str r0,[r5,0x14]
+str r0,[r5,0x50]
+str r0,[r5,0x54]
+cmp r0,0x1000
+movge r0,0x78
+strgeh r0,[r5,0x1a]
+movge r0,0x3
+strgeb r0,[r5,0xd]
+b _022018d4
+_022016e8:
+ldrsh r0,[r5,0x18]
+and r0,r0,0x1
+mov r0,r0,lsl 0x8
+add r0,r0,0x1000
+str r0,[r5,0x50]
+ldr r0,[r5,0x50]
+str r0,[r5,0x54]
+ldrsh r0,[r5,0x18]
+tst r0,0x3
+bne _02201810
+mov r0,0x0
+mov r1,0x3
+bl 0x2012d18
+str r0,[r13,0x10]
+ldr r1,[r5,0x34]
+str r1,[r13,0x24]
+ldrsh r2,[r5,0x1c]
+add r2,r2,0x1
+strh r2,[r5,0x1c]
+mvn r0,0x3
+mov r1,0x4
+bl 0x2012d18
+mov r2,r0,lsl 0xc
+str r2,[r13,0x28]
+mvn r0,0x47
+mvn r1,0x2f
+bl 0x2012d18
+mov r0,r0,lsl 0xc
+str r0,[r13,0x2c]
+mov r10,0x0
+mov r11,0x2e
+ldrsh r1,[r5,0x1c]
+tst r1,0x1
+moveq r8,0x0
+moveq r9,r1,lsl 0x1
+movne r8,r1,lsl 0x1
+movne r9,0x0
+mov r0,0x2000
+rsb r0,r0,0x0
+str r0,[r13,0x14]
+mov r1,0x1000
+rsb r0,r1,0x0
+str r0,[r13,0x18]
+mov r7,0x20
+_02201798:
+ldr r2,[r5,0x2c]
+ldr r1,[r13,0x28]
+ldr r0,[r13,0x2c]
+add r1,r2,r1
+add r1,r1,r9,lsl 0xc
+str r1,[r13,0x1c]
+ldr r1,[r5,0x30]
+ldr r3,[r13,0x10]
+add r0,r1,r0
+add r0,r0,r8,lsl 0xc
+str r0,[r13,0x20]
+str r7,[r13,0x0]
+add r0,r13,0x1c
+ldmfd r0,{r0,r1,r2}
+bl 0x201a598
+movs r6,r0
+rsb r9,r9,0x0
+rsb r8,r8,0x0
+beq _02201804
+ldr r1,[r6,0x70]
+orr r1,r1,0x20
+str r1,[r6,0x70]
+ldr r1,[r13,0x18]
+strh r11,[r6,0x76]
+ldr r0,[r13,0x14]
+bl 0x2012d18
+str r0,[r6,0x3c]
+_02201804:
+add r10,r10,0x1
+cmp r10,0x2
+blt _02201798
+_02201810:
+mov r2,0x1000
+rsb r2,r2,0x0
+mov r0,r5
+mov r1,0x0
+mov r3,0xc
+bl 0x201439c
+mov r0,r5
+bl 0x201360c
+ldrsh r0,[r5,0x1a]
+sub r0,r0,0x1
+strh r0,[r5,0x1a]
+cmp r0,0x0
+bne _022018d4
+ldr r0,[r5,0x210]
+tst r0,0x2
+bne _0220185c
+mov r0,0x3
+bl 0x201ad60
+_0220185c:
+mov r0,r5
+bl 0x2012ee8
+mov r0,r5
+mov r1,0x0
+bl 0x2012ec4
+mov r0,0x0
+strb r0,[r5,0xe]
+mov r0,0x4
+strb r0,[r5,0xd]
+b _022018d4
+_02201884:
+ldrb r0,[r5,0x81]
+sub r0,r0,0x1
+strb r0,[r5,0x81]
+cmp r0,0x0
+bne _022018d4
+ldr r0,[r5,0x210]
+tst r0,0x2
+bne _022018c0
+mov r0,0x3
+bl 0x201ad60
+ldr r0,[r4,0x18+0xd0]
+bic r0,r0,0x3
+str r0,[r4,0x18+0xd0]
+_022018c0:
+mov r0,r5
+bl 0x2012ae0
+add r13,r13,0x34
+ldmfd r13!,{r4-r11,r15}
+_022018d4:
+ldrb r0,[r5,0xd]
+cmp r0,0x4
+beq _02201930
+ldr r0,[r5,0x210]
+tst r0,0x2
+bne _02201930
+ldr r0,[r5,0x2c]
+str r0,[r13,0x1c]
+ldr r2,[r5,0x30]
+sub r2,r2,0x40000
+str r2,[r13,0x20]
+mov r1,0x3
+str r1,[r13,0x0]
+ldr r3,[r5,0x14]
+mov r3,r3,lsl 0x1
+add r3,r3,0x1000
+add r0,r13,0x1c
+ldmfd r0,{r0,r1,r2}
+bl 0x201acf0
+ldrb r0,[r5,0xd]
+cmp r0,0x2
+movhs r0,0x2
+strhsh r0,[r4,0xf4]
+_02201930:
+ldrsh r0,[r5,0x18]
+add r0,r0,0x1
+strh r0,[r5,0x18]
+ldrb r0,[r5,0xe]
+cmp r0,0x0
+beq _022019bc
+ldrsh r0,[r5,0x18]
+tst r0,0xf
+bne _022019bc
+ldrsh r2,[r5,0x74]
+str r2,[r13,0x0]
+mov r0,0x10
+str r0,[r13,0x4]
+str r0,[r13,0x8]
+mov r1,0x20
+str r1,[r13,0xc]
+add r1,r5,0x2c
+ldmfd r1,{r1,r2,r3}
+mov r0,r5
+bl 0x2018cbc
+movs r4,r0
+beq _022019bc
+mov r0,0x1000
+rsb r0,r0,0x0
+str r0,[r4,0x3c]
+mov r0,0x10
+str r0,[r4,0x44]
+mov r0,0x20
+str r0,[r4,0x48]
+bl 0x2012d78
+and r0,r0,0xff
+cmp r0,0x80
+ldrlo r0,[r4,0x70]
+orrlo r0,r0,0x80
+strlo r0,[r4,0x70]
+_022019bc:
+mov r0,r5
+bl 0x220e94c
+add r13,r13,0x34
+ldmfd r13!,{r4-r11,r15}
+.pool
+.endarea
+;arm_func_end 0x22012c0
+
+.close
+
