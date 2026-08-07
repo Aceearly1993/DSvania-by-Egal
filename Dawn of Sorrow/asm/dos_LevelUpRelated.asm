@@ -5,6 +5,8 @@
 ; This contains the code for calculating player stats,
 ; base maximum HP/MP, and levels for Enemy Set and Boss Rush mode.
 ; Use this to edit growth rates and static values.
+; Most growths add a constant based on set intervals.
+; To always grow, change the "tst r1,yy" to "tst r1,0xFF".
 
 ; by EgalLau37
 
@@ -44,7 +46,7 @@ add r0,r1,0x1
 bl 0x21ffc8c
 ldr r1,[r10,0x3c]
 cmp r0,r1
-bhi _021ffc34
+bhi _021ffc34	;(do not edit lines 48~53)
 add r7,r4,0x4	;str
 add r6,r4,0x6	;con
 add r5,r4,0x8	;int
@@ -58,9 +60,9 @@ strh r0,[r9,0x0]
 ldrsh r0,[r8,0x0]
 add r0,r0,0x6	;max MP growth
 strh r0,[r8,0x0]
-ldrsh r0,[r10,0x0]
-cmp r0,0x32
-bge _021ffba8
+ldrsh r1,[r10,0x0]
+cmp r1,0x32
+bge _021ffba8	;additional HP/MP growths if below level 50
 ldrsh r0,[r9,0x0]
 add r0,r0,0x4	;max HP growth p2
 strh r0,[r9,0x0]
@@ -68,18 +70,16 @@ ldrsh r0,[r8,0x0]
 add r0,r0,0x2	;max MP growth p2
 strh r0,[r8,0x0]
 _021ffba8:
-ldrsh r1,[r10,0x0]
-cmp r1,0x32
+cmp r1,0x32	;if below level 51, always run growths check
 ble _021ffbbc
-ands r0,r1,0x1
+tst r1,0x1	;skip growths every even level
 beq _021ffc04
 _021ffbbc:
-ands r0,r1,0xf
+tst r1,0xf	;if level holds 0x1, 0x2, 0x4, 0x8 (skip every 16th level)
 ldrnesh r0,[r7,0x0]	;str growth
 addne r0,r0,0x1
 strneh r0,[r7,0x0]
-ldrsh r0,[r10,0x0]
-ands r0,r0,0x7
+tst r1,0x7	;if level holds 0x1, 0x2, 0x4 (skip every 8th level)
 beq _021ffbf0
 ldrsh r0,[r6,0x0]	;con growth
 add r0,r0,0x1
@@ -88,8 +88,7 @@ ldrsh r0,[r5,0x0]	;int growth
 add r0,r0,0x1
 strh r0,[r5,0x0]
 _021ffbf0:
-ldrsh r0,[r10,0x0]
-ands r0,r0,0x1
+tst r0,0x1	;if level holds 0x1 (skip every even level)
 ldrnesh r0,[r4,0x0]	;luk growth
 addne r0,r0,0x1
 strneh r0,[r4,0x0]
