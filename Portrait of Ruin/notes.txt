@@ -1,0 +1,23 @@
+
+221a238 - CreateWeapon ?
+
+DoS to PoR routines:
+0x20198d4 -> 0x201eb88	;???
+0x2012ec4 -> 0x201362c	;???
+0x21C4B54 -> 0x21DA800	;EntityCheckOnScreenByArea ?
+
+2012F14 RandMinMax
+21C3450 -> 21D9120	;?
+21C3408 -> 21D90D8	;"EnemyUpdateVelocity??"
+21C33C0 -> 21D9090	;?
+21C3338 -> 21D900C	;?, run by RPG
+21C3388 -> 21D9058	;MoveXVel
+21C3374 -> 21D9044	;MoveYVel
+
+2006350 -> 2005168	;???
+20069cc -> 20057a8	;???
+201f9d8 -> 202808c	;?
+2013270 -> 2013b10	;SetHitbox
+2019894 -> 201eb48	;?
+
+

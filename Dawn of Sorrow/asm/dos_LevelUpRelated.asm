@@ -26,6 +26,7 @@ mov r0,SetLevel_EnemySet
 mov r0,SetLevel_BossRush
 
 .org 0x21ffb08
+.area 0x150,0x69
 func_ov000_021ffb08:
 PlayerCalculateLevelUpStats:
 stmfd r13!,{r4-r11,r14}
@@ -129,6 +130,7 @@ bx r14
 
 
 .org 0x21ffc58
+.area 0x34,0x69
 func_ov000_021ffc58:
 stmfd r13!,{r4,r14}
 mov r4,r0
