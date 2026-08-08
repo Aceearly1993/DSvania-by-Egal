@@ -1,4 +1,20 @@
 ↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+Third release (1.1.1) {08/08/2026} [polishing update]: 
+
+Changelog:
+	→throwing weapons wielded by Hammer now use the attack stat instead of the weapon base attack
+	→guns in Julius mode use a different damage formula (((weapon attack)/2)+((level)/2))
+	→added two-handed blunt weapon swing animations for Hammer
+	→added a sitting animation for Hammer
+	→added Hammer to the Julius mode credits sequence
+
+Bugfixes:
+	→fixed bullet casings always being released to the far right
+	→fixed game crashing when skipping texts
+	→fixed button pressing icon during dialogue not being cleared after dialogue
+
+
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
 Second release (1.1.0) {08/04/2026} [balance patch]: 
 
 Changelog:
