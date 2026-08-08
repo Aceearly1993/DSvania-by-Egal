@@ -123,10 +123,12 @@ ldmfd r13!,{r4-r7,r15}
 _0202a5e8:
 bl 0x202ba40
 bl 0x202e644
-ldr r1,=0xdaf
+ldr r7,=0x208ac20
+ldr r7,[r7,0x0]
+ldr r1,=0x36daf
 ldrsb r1,[r7,r1]
 ldr r0,=0x76c4
-add r2,r2,r0
+add r2,r7,r0
 mov r0,0x0
 add r4,r2,r1,lsl 0x4
 bl 0x20155c8
@@ -136,15 +138,15 @@ str r1,[r13,0x4]
 str r1,[r13,0x8]
 str r1,[r13,0xc]
 str r1,[r13,0x10]
-add r0,r0,0x0
-str r0,[r13,0x14]
 str r1,[r13,0x18]
 str r1,[r13,0x1c]
+add r0,r0,0x0
+str r0,[r13,0x14]
 mov r0,r4
 mov r2,0x0
 mov r3,0x0
 bl 0x202a860
-ldr r0,=0xdaf
+ldr r0,=0x36daf
 ldrsb r0,[r7,r0]
 mov r0,r0,lsl 0x10
 mov r0,r0,asr 0x10
@@ -154,19 +156,19 @@ mov r0,0xd0
 mov r1,0x0
 bl 0x202ec8c
 bl 0x202e5f4
-sub r1,r7,0x3600
-mov r2,0x1
-strb r2,[r1,0x11]
-ldrb r2,[r7,0xd7b]
-bic r2,r2,0x2
-strb r2,[r7,0xd7b]
-mov r3,0x0
-strb r3,[r7,0xd77]
-strb r3,[r7,0xd7a]
-strb r3,[r7,0xd79]
-ldrb r2,[r7,0xd73]
-strb r2,[r7,0xd72]
-strb r3,[r7,0xd75]
+mov r0,0x1
+strb r0,[r7,0x11]
+add r3,r7,0x36000
+ldrb r0,[r3,0xd7b]
+bic r0,r0,0x2
+strb r0,[r3,0xd7b]
+mov r0,0x0
+strb r0,[r3,0xd77]
+strb r0,[r3,0xd7a]
+strb r0,[r3,0xd79]
+ldrb r1,[r3,0xd73]
+strb r1,[r3,0xd72]
+strb r0,[r3,0xd75]
 add r13,r13,0x38
 ldmfd r13!,{r4-r7,r15}
 _0202a6f0:
