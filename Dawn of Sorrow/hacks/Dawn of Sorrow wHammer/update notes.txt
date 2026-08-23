@@ -1,4 +1,19 @@
 ↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
+Fourth release (1.1.2) {08/23/2026} [bugfix update]: 
+
+Changelog:
+	→tweaked RPG damage formula in Julius mode (((weapon attack)/4)+(weapon attack)/8))+level)
+	→tweaked gun damage formula in Julius mode (((weapon attack)/2)+((level)/2)+((level)/4))
+	→the RPG now has fire affinity in Julius mode
+	→guns now have holy affinity in Julius mode
+
+Bugfixes:
+	→fixed some typos with some dialogues
+	→fixed game crash related to displaying HP/MP for the bestiary
+	→fixed oversight that caused some JP voice clips to be quieter than they should
+
+
+↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
 Third release (1.1.1) {08/08/2026} [polishing update]: 
 
 Changelog:
