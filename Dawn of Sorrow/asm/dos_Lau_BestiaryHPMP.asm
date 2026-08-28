@@ -343,7 +343,7 @@ ldmfd r13!,{r4-r9,r15}
 
 
 AlsoDisplayHPMPText:
-mov r0,0x14+3
+mov r0,0x14+4
 str r0,[r13,0x0]
 sub r0,r5,0x2
 ;and r0,r0,0xff
@@ -356,7 +356,7 @@ mov r1,0x0
 mov r2,0x3
 mov r3,0x1
 bl 0x20397c8
-mov r0,0x14+3
+mov r0,0x14+4
 str r0,[r13,0x0]
 sub r0,r5,0x1
 ;and r0,r0,0xff
