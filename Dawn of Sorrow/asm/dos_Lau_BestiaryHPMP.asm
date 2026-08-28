@@ -1,0 +1,446 @@
+.nds
+.relativeinclude on
+.erroronwarning on
+
+; This patch adds information about enemy HP and MP on the
+; bestiary, for both the top-screen display and the bestiary
+; screen. However, this does not account for individual enemies
+; that have been scaled by any auto-scaled patch; this will
+; only show the default base values.
+; This also shifts the item texts/names on the window left to
+; allow for more space for the HP/MP texts/numbers.
+
+; by EgalLau37
+
+
+Overlay41Start equ 0x02308920
+FreeSpace equ Overlay41Start+0x1300
+
+.open "ftc/arm9.bin", 0x2000000
+
+;displays text labels
+.org 0x203ad00
+.area 0x198,0x69
+stmfd r13!,{r4-r6,r14}
+sub r13,r13,0x10
+mov r5,r0
+mov r6,r1
+mov r4,r2
+mov r0,0x1f
+str r0,[r13,0x0]
+str r6,[r13,0x4]
+mov r0,0x10
+mov r1,0x0
+mov r2,0xb
+mov r3,0x4
+bl 0x2008fbc
+mov r0,r6
+bl 0x200aa04
+cmp r4,0x0
+addeq r13,r13,0x10
+ldmeqfd r13!,{r4-r6,r15}
+mov r0,0x9-1
+str r0,[r13,0x0]
+mov r4,r5,asr 0x3
+add r0,r4,0x6
+;and r0,r0,0xff
+str r0,[r13,0x4]
+ldr r0,=0x3ec	;ITEM1
+str r0,[r13,0x8]
+str r6,[r13,0xc]
+mov r0,0x10
+mov r1,0x0
+mov r2,0x5
+mov r3,0x1
+bl 0x20397c8
+mov r0,0x9-1
+str r0,[r13,0x0]
+add r0,r4,0x7
+;and r0,r0,0xff
+str r0,[r13,0x4]
+ldr r0,=0x3ed	;ITEM2
+str r0,[r13,0x8]
+str r6,[r13,0xc]
+mov r0,0x10
+mov r1,0x1
+mov r2,0x5
+mov r3,0x1
+bl 0x20397c8
+mov r0,0xa-2
+str r0,[r13,0x0]
+add r5,r4,0x8
+and r1,r5,0xff
+str r1,[r13,0x4]
+ldr r0,=0x3ee	;SOUL
+str r0,[r13,0x8]
+str r6,[r13,0xc]
+mov r0,0x10
+mov r1,0x2
+mov r2,0x4
+mov r3,0x1
+bl 0x20397c8
+mov r1,0x2
+str r1,[r13,0x0]
+add r0,r4,0x1
+;and r0,r0,0xff
+str r0,[r13,0x4]
+ldr r1,=0x3f6	;NO.
+str r1,[r13,0x8]
+str r6,[r13,0xc]
+mov r0,0x10
+mov r1,0x3
+mov r2,0x3
+mov r3,0x1
+bl 0x20397c8
+mov r1,0x14
+str r1,[r13,0x0]
+and r0,r5,0xff
+str r0,[r13,0x4]
+ldr r1,=0x3ef	;RARITY
+str r1,[r13,0x8]
+str r6,[r13,0xc]
+mov r0,0x13
+mov r1,0x3
+mov r2,0x8
+mov r3,0x1
+bl 0x20397c8
+b AlsoDisplayHPMPText
+BestiaryDisplay_return:
+ldr r0,=0x208ac20
+ldr r0,[r0,0x0]
+ldrb r0,[r0,0x10]
+cmp r0,0x0
+addeq r13,r13,0x10
+ldmeqfd r13!,{r4-r6,r15}
+mov r0,0x0
+mov r1,0x8
+bl 0x203b16c
+add r13,r13,0x10
+ldmfd r13!,{r4-r6,r15}
+.pool
+.endarea
+;arm_func_end 0x203ad00
+
+
+;displays the numbers
+.org 0x203a9e0
+.area 0x320,0x69
+stmfd r13!,{r4-r9,r14}
+sub r13,r13,0x18
+mov r8,r0
+mov r4,r1
+mov r7,r2
+mov r0,0x1f
+str r0,[r13,0x0]
+str r7,[r13,0x4]
+mov r0,0x0
+mov r1,0x0
+mov r2,0xd
+mov r3,0x4
+bl 0x2008fbc
+mov r0,r7
+bl 0x200aa04
+cmp r8,0x0
+blt _0203ace4
+cmp r8,0x76
+bge _0203ace4
+ldr r9,=0x208ac20
+ldr r9,[r9,0x0]
+ldr r6,=0x2078cac	;EnemyDataTable
+mov r1,0x24
+mla r6,r8,r1,r6
+mov r4,r4,asr 0x3
+add r5,r4,0x1
+mov r3,0x9
+str r3,[r13,0x0]
+and r1,r5,0xff
+str r1,[r13,0x4]
+add r0,r8,0x1a8	;FirstTextID_EnemyName
+;mov r0,r0,lsl 0x10
+;mov r0,r0,lsr 0x10
+str r0,[r13,0x8]
+str r7,[r13,0xc]
+mov r0,0x0
+mov r1,0x0
+mov r2,0xe
+mov r3,0x1
+bl 0x2039714
+add r2,r4,0x6
+ldrh r0,[r6,0x8]	;item 1
+cmp r0,0x0
+beq _0203ab1c
+mov r3,r8,asr 0x5
+add r1,r9,r3,lsl 0x2
+add r3,r1,0x36000
+and r12,r8,0x1f
+mov r1,0x1
+mov r12,r1,lsl r12
+ldr r3,[r3,0x980]
+tst r12,r3
+beq _0203aaec
+add r0,r0,0xb
+mov r0,r0,lsl 0x10
+mov r0,r0,lsr 0x10
+str r0,[r13,0x8]
+mov r3,0xf-2
+str r3,[r13,0x0]
+;and r2,r2,0xff
+str r2,[r13,0x4]
+str r7,[r13,0xc]
+mov r0,0x0
+mov r2,0xc
+mov r3,0x1
+bl 0x20397c8
+b _0203ab4c
+_0203aaec:
+mov r0,0xf-2
+str r0,[r13,0x0]
+;and r2,r2,0xff
+str r2,[r13,0x4]
+ldr r0,=0x3c8
+str r0,[r13,0x8]
+str r7,[r13,0xc]
+mov r0,0x0
+mov r2,0xc
+mov r3,0x1
+bl 0x20397c8
+b _0203ab4c
+_0203ab1c:
+mov r0,0xf-2
+str r0,[r13,0x0]
+and r2,r2,0xff
+str r2,[r13,0x4]
+ldr r0,=0x3c7
+str r0,[r13,0x8]
+str r7,[r13,0xc]
+mov r0,0x0
+mov r1,0x1
+mov r3,0x1
+mov r2,0xc
+bl 0x20397c8
+_0203ab4c:
+add r1,r4,0x7
+ldrh r0,[r6,0xa]	;item 2
+cmp r0,0x0
+beq _0203abf0
+mov r3,r8,asr 0x5
+add r2,r9,r3,lsl 0x2
+add r2,r2,0x36000
+and r12,r8,0x1f
+mov r3,0x1
+mov r12,r3,lsl r12
+ldr r2,[r2,0x990]
+tst r12,r2
+beq _0203abc0
+mov r2,0xf-2
+str r2,[r13,0x0]
+;and r1,r1,0xff
+str r1,[r13,0x4]
+add r0,r0,0xb	;FirstTextID_ItemNames
+;mov r0,r0,lsl 0x10
+;mov r0,r0,lsr 0x10
+str r0,[r13,0x8]
+str r7,[r13,0xc]
+mov r0,0x0
+mov r1,0x2
+mov r2,0xc
+bl 0x20397c8
+b _0203ac20
+_0203abc0:
+mov r0,0xf-2
+str r0,[r13,0x0]
+;and r1,r1,0xff
+str r1,[r13,0x4]
+ldr r0,=0x3c8
+str r0,[r13,0x8]
+str r7,[r13,0xc]
+mov r0,0x0
+mov r1,0x2
+mov r2,0xc
+bl 0x20397c8
+b _0203ac20
+_0203abf0:
+mov r0,0xf-2
+str r0,[r13,0x0]
+and r1,r1,0xff
+str r1,[r13,0x4]
+ldr r0,=0x3c7
+str r0,[r13,0x8]
+str r7,[r13,0xc]
+mov r0,0x0
+mov r1,0x2
+mov r2,0xc
+mov r3,0x1
+bl 0x20397c8
+_0203ac20:	;enemy number
+mov r0,0x5
+str r0,[r13,0x0]
+and r0,r5,0xff
+str r0,[r13,0x4]
+add r0,r8,0x1
+str r0,[r13,0x8]
+mov r0,0x0
+str r0,[r13,0xc]
+str r7,[r13,0x10]
+mov r0,0x9
+mov r1,0x3
+mov r2,0x3
+mov r3,0x1
+bl 0x2009d8c
+add r4,r4,0x8
+ldrsb r0,[r6,0x1a]	;soul
+cmp r0,0x0
+blt _0203aca4
+bl 0x221029c
+mov r1,0xf-2
+str r1,[r13,0x0]
+and r1,r4,0xff
+str r1,[r13,0x4]
+str r0,[r13,0x8]
+mov r0,0x0
+str r0,[r13,0xc]
+str r7,[r13,0x10]
+mov r0,0xc
+mov r1,0x3
+mov r2,0x1
+mov r3,0x1
+bl 0x2009d8c
+b _0203acd4
+_0203aca4:
+mov r0,0xf-2
+str r0,[r13,0x0]
+and r1,r4,0xff
+str r1,[r13,0x4]
+ldr r0,=0x3c7	;---
+str r0,[r13,0x8]
+str r7,[r13,0xc]
+mov r0,0xc
+mov r1,0x3
+mov r2,0x1
+mov r3,0x1
+bl 0x203986c
+_0203acd4:
+b AlsoDisplayEnemyHPMPValues
+BestiaryNumbers_return:
+mov r0,r6
+add r13,r13,0x18
+ldmfd r13!,{r4-r9,r15}
+_0203ace4:
+mov r0,0x0
+add r13,r13,0x18
+ldmfd r13!,{r4-r9,r15}
+.pool
+.endarea
+;arm_func_end 0x203a9e0
+
+
+.close
+
+
+.open "ftc/overlay9_41", Overlay41Start
+
+.org Freespace
+
+
+AlsoDisplayHPMPText:
+mov r0,0x14+3
+str r0,[r13,0x0]
+sub r0,r5,0x2
+;and r0,r0,0xff
+str r0,[r13,0x4]
+ldr r1,=0x3FA	;HP
+str r1,[r13,0x8]
+str r6,[r13,0xc]
+mov r0,0x15
+mov r1,0x0
+mov r2,0x3
+mov r3,0x1
+bl 0x20397c8
+mov r0,0x14+3
+str r0,[r13,0x0]
+sub r0,r5,0x1
+;and r0,r0,0xff
+str r0,[r13,0x4]
+ldr r1,=0x3FB	;MP
+str r1,[r13,0x8]
+str r6,[r13,0xc]
+mov r0,0x15
+mov r1,0x1
+mov r2,0x3
+mov r3,0x1
+bl 0x20397c8
+b BestiaryDisplay_return
+.pool
+
+;0x3C8 - "???"
+AlsoDisplayEnemyHPMPValues:
+mov r3,r8,asr 0x5
+add r1,r9,r3,lsl 0x2
+add r3,r1,0x36000
+and r12,r8,0x1f
+mov r1,0x1
+mov r12,r1,lsl r12
+ldr r3,[r3,0x970]	;enemy bestiary entry unlocked
+tst r12,r3
+beq DisplayUnknownValues_bestiary
+
+mov r1,0x16+3
+str r1,[r13,0x0]
+sub r1,r4,0x2
+str r1,[r13,0x4]
+ldrh r0,[r6,0xE]
+str r0,[r13,0x8]
+mov r0,0x0
+str r0,[r13,0xc]	;font color
+str r7,[r13,0x10]	;screen?
+mov r0,0x19	;tilemap x-pos
+mov r1,0x0	;tilemap y-pos
+mov r2,0x5	;digits?
+mov r3,0x1	;affects drawing?
+bl 0x2009d8c
+mov r1,0x16+3
+str r1,[r13,0x0]
+sub r1,r4,0x1
+str r1,[r13,0x4]
+ldrh r0,[r6,0x10]
+str r0,[r13,0x8]
+mov r0,0x0
+str r0,[r13,0xc]
+str r7,[r13,0x10]
+mov r0,0x19
+mov r1,0x1
+mov r2,0x5
+mov r3,0x1
+bl 0x2009d8c
+b BestiaryNumbers_return
+
+DisplayUnknownValues_bestiary:
+mov r0,0x16+3
+str r0,[r13,0x0]
+sub r1,r4,0x2
+str r1,[r13,0x4]
+ldr r0,=0x3C8
+str r0,[r13,0x8]
+str r7,[r13,0xc]
+mov r0,0x19	;x-position on tilemap
+mov r1,0x0	;y-position on tilemap
+mov r2,0x5	;number of digits
+mov r3,0x1	;affects how tiles are drawn?
+bl 0x203986c
+mov r0,0x16+3
+str r0,[r13,0x0]
+sub r1,r4,0x1
+str r1,[r13,0x4]
+ldr r0,=0x3C8
+str r0,[r13,0x8]
+str r7,[r13,0xc]
+mov r0,0x19
+mov r1,0x1
+mov r2,0x5
+mov r3,0x1
+bl 0x203986c
+b BestiaryNumbers_return
+
+
+.close
+
